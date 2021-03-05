@@ -8,3 +8,6 @@ run-b:
 
 migrate:
 	$(BACKEND) python manage.py makemigrations $(app) && python manage.py migrate $(app)
+
+lint:
+	scripts/lint.sh

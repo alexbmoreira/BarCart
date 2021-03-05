@@ -6,3 +6,6 @@ python:
 # install dependencies
 install:
   - make install-b
+# lint
+script:
+  - make lint
