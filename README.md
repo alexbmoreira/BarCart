@@ -37,6 +37,12 @@ Then we have to make and migrate.
 make migrate
 ```
 
+Create a super user to access admin controls
+
+```
+python backend/manage.py createsuperuser
+```
+
 ### Running the dev servers
 
 Backend:
