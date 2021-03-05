@@ -44,12 +44,12 @@ Backend:
 make run-b
 ```
 > Server will be running on port 8000
-<!-- 
-Frontend:
+
+<!-- Frontend:
 ```shell
 make run-frontend
 ```
-> Server will be running on port 8080
+> Server will be running on port 8080 -->
 
 ### Linting backend
 
@@ -57,7 +57,7 @@ make run-frontend
 make lint
 ```
 
-### Running tests
+<!-- ### Running tests
 
 ```shell
 make test
