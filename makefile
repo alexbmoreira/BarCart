@@ -1,8 +1,10 @@
+BACKEND=cd backend &&
+
 install-b:
-	cd backend && pip install -r requirements.txt
+	$(BACKEND) pip install -r requirements.txt
 
 run-b:
-	cd backend && python manage.py runserver
+	$(BACKEND) python manage.py runserver
 
 migrate:
-	cd backend && python manage.py makemigrations $(app) && python manage.py migrate $(app)
+	$(BACKEND) python manage.py makemigrations $(app) && python manage.py migrate $(app)
