@@ -11,18 +11,18 @@ class Ingredient(models.Model):
         self.name = self.name.lower()
         super().save(*args, **kwargs)
 
-class Recipe(models.Model):
+class Drink(models.Model):
     name = models.CharField(max_length=100)
     instructions = models.TextField(blank=True, default="")
     ingredients = models.ManyToManyField(
-        Ingredient, through="RecipeIngredient"
+        Ingredient, through="DrinkIngredient"
     )
 
     def __str__(self):
         return self.name
 
 
-class RecipeIngredient(models.Model):
+class DrinkIngredient(models.Model):
     ounce = 'oz'
     tsp = 'tsp'
     tbsp = 'tbsp'
@@ -33,15 +33,15 @@ class RecipeIngredient(models.Model):
         (tbsp, "tbsp"),
     ]
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
     quantity = models.FloatField()
     units = models.CharField(choices=UNITS, max_length=20)
 
     class Meta:
-        unique_together = ["ingredient", "recipe"]
+        unique_together = ["ingredient", "drink"]
 
     def __str__(self):
         return (
             f"{self.quantity} {self.units} "
-            f"of {self.ingredient} for {self.recipe}"
+            f"of {self.ingredient} for {self.drink}"
         )
