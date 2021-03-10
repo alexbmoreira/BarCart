@@ -1,304 +1,307 @@
 data = {
     "ingredients":[
         {
-            "name": "Light rum"
+            "name": "salt"
         },
         {
-            "name": "Applejack"
+            "name": "light rum"
         },
         {
-            "name": "Gin"
+            "name": "applejack"
         },
         {
-            "name": "Dark rum"
+            "name": "gin"
         },
         {
-            "name": "Sweet Vermouth"
+            "name": "dark rum"
         },
         {
-            "name": "Strawberry schnapps"
+            "name": "sweet vermouth"
         },
         {
-            "name": "Scotch"
+            "name": "strawberry schnapps"
         },
         {
-            "name": "Apricot brandy"
+            "name": "scotch"
         },
         {
-            "name": "Triple sec"
+            "name": "apricot brandy"
         },
         {
-            "name": "Southern Comfort"
+            "name": "triple sec"
         },
         {
-            "name": "Orange bitters"
+            "name": "southern comfort"
         },
         {
-            "name": "Brandy"
+            "name": "orange bitters"
         },
         {
-            "name": "Lemon vodka"
+            "name": "brandy"
         },
         {
-            "name": "Blended whiskey"
+            "name": "lemon vodka"
         },
         {
-            "name": "Dry Vermouth"
+            "name": "blended whiskey"
         },
         {
-            "name": "Amaretto"
+            "name": "dry vermouth"
         },
         {
-            "name": "Tea"
+            "name": "amaretto"
         },
         {
-            "name": "Champagne"
+            "name": "tea"
         },
         {
-            "name": "Coffee liqueur"
+            "name": "champagne"
         },
         {
-            "name": "Bourbon"
+            "name": "coffee liqueur"
         },
         {
-            "name": "Tequila"
+            "name": "bourbon"
         },
         {
-            "name": "Vodka"
+            "name": "tequila"
         },
         {
-            "name": "A\u00f1ejo rum"
+            "name": "vodka"
         },
         {
-            "name": "Bitters"
+            "name": "a\u00f1ejo rum"
         },
         {
-            "name": "Sugar"
+            "name": "bitters"
         },
         {
-            "name": "Kahlua"
+            "name": "sugar"
         },
         {
-            "name": "demerara Sugar"
+            "name": "kahlua"
         },
         {
-            "name": "Dubonnet Rouge"
+            "name": "demerara sugar"
         },
         {
-            "name": "Watermelon"
+            "name": "dubonnet rouge"
         },
         {
-            "name": "Lime juice"
+            "name": "watermelon"
         },
         {
-            "name": "Irish whiskey"
+            "name": "lime juice"
         },
         {
-            "name": "Apple brandy"
+            "name": "irish whiskey"
         },
         {
-            "name": "Carbonated water"
+            "name": "apple brandy"
         },
         {
-            "name": "Cherry brandy"
+            "name": "carbonated water"
         },
         {
-            "name": "Creme de Cacao"
+            "name": "cherry brandy"
         },
         {
-            "name": "Grenadine"
+            "name": "creme de cacao"
         },
         {
-            "name": "Port"
+            "name": "grenadine"
         },
         {
-            "name": "Coffee brandy"
+            "name": "port"
         },
         {
-            "name": "Red wine"
+            "name": "coffee brandy"
         },
         {
-            "name": "Rum"
+            "name": "red wine"
         },
         {
-            "name": "Grapefruit juice"
+            "name": "rum"
         },
         {
-            "name": "Ricard"
+            "name": "grapefruit juice"
         },
         {
-            "name": "Sherry"
+            "name": "ricard"
         },
         {
-            "name": "Cognac"
+            "name": "sherry"
         },
         {
-            "name": "Sloe gin"
+            "name": "cognac"
         },
         {
-            "name": "Apple juice"
+            "name": "sloe gin"
         },
         {
-            "name": "Pineapple juice"
+            "name": "apple juice"
         },
         {
-            "name": "Lemon juice"
+            "name": "pineapple juice"
         },
         {
-            "name": "Sugar syrup"
+            "name": "lemon juice"
         },
         {
-            "name": "Milk"
+            "name": "sugar syrup"
         },
         {
-            "name": "Strawberries"
+            "name": "milk"
         },
         {
-            "name": "Chocolate syrup"
+            "name": "strawberries"
         },
         {
-            "name": "Yoghurt"
+            "name": "chocolate syrup"
         },
         {
-            "name": "Mango"
+            "name": "yoghurt"
         },
         {
-            "name": "Ginger"
+            "name": "mango"
         },
         {
-            "name": "Lime"
+            "name": "ginger"
         },
         {
-            "name": "Cantaloupe"
+            "name": "lime"
         },
         {
-            "name": "Berries"
+            "name": "cantaloupe"
         },
         {
-            "name": "Grapes"
+            "name": "berries"
         },
         {
-            "name": "Kiwi"
+            "name": "grapes"
         },
         {
-            "name": "Tomato juice"
+            "name": "kiwi"
         },
         {
-            "name": "Cocoa powder"
+            "name": "tomato juice"
         },
         {
-            "name": "Chocolate"
+            "name": "cocoa powder"
         },
         {
-            "name": "Heavy cream"
+            "name": "chocolate"
         },
         {
-            "name": "Galliano"
+            "name": "heavy cream"
         },
         {
-            "name": "Peach Vodka"
+            "name": "galliano"
         },
         {
-            "name": "Ouzo"
+            "name": "peach vodka"
         },
         {
-            "name": "Coffee"
+            "name": "ouzo"
         },
         {
-            "name": "Spiced rum"
+            "name": "coffee"
         },
         {
-            "name": "Water"
+            "name": "spiced rum"
         },
         {
-            "name": "Espresso"
+            "name": "water"
         },
         {
-            "name": "Angelica root"
+            "name": "espresso"
         },
         {
-            "name": "Orange"
+            "name": "angelica root"
         },
         {
-            "name": "Cranberries"
+            "name": "orange"
         },
         {
-            "name": "Johnnie Walker"
+            "name": "cranberries"
         },
         {
-            "name": "Apple cider"
+            "name": "johnnie walker"
         },
         {
-            "name": "Everclear"
+            "name": "apple cider"
         },
         {
-            "name": "Cranberry juice"
+            "name": "everclear"
         },
         {
-            "name": "Egg yolk"
+            "name": "cranberry juice"
         },
         {
-            "name": "Egg"
+            "name": "egg yolk"
         },
         {
-            "name": "Grape juice"
+            "name": "egg"
         },
         {
-            "name": "Peach nectar"
+            "name": "grape juice"
         },
         {
-            "name": "Lemon"
+            "name": "peach nectar"
         },
         {
-            "name": "Firewater"
+            "name": "lemon"
         },
         {
-            "name": "Lemonade"
+            "name": "firewater"
         },
         {
-            "name": "Lager"
+            "name": "lemonade"
         },
         {
-            "name": "Whiskey"
+            "name": "lager"
         },
         {
-            "name": "Absolut Citron"
+            "name": "whiskey"
         },
         {
-            "name": "Pisco"
+            "name": "absolut citron"
         },
         {
-            "name": "Irish cream"
+            "name": "pisco"
         },
         {
-            "name": "Ale"
+            "name": "irish cream"
         },
         {
-            "name": "Chocolate liqueur"
+            "name": "ale"
         },
         {
-            "name": "Midori melon liqueur"
+            "name": "chocolate liqueur"
         },
         {
-            "name": "Sambuca"
+            "name": "midori melon liqueur"
         },
         {
-            "name": "Cider"
+            "name": "sambuca"
         },
         {
-            "name": "Sprite"
+            "name": "cider"
         },
         {
-            "name": "7-Up"
+            "name": "sprite"
         },
         {
-            "name": "Blackberry brandy"
+            "name": "7-up"
         },
         {
-            "name": "Peppermint schnapps"
+            "name": "blackberry brandy"
         },
         {
-            "name": "Creme de Cassis"
+            "name": "peppermint schnapps"
+        },
+        {
+            "name": "creme de cassis"
         }
     ]
 }
