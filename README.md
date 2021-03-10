@@ -43,6 +43,14 @@ Create a super user to access admin controls
 python backend/manage.py createsuperuser
 ```
 
+### Filling the database
+
+To use the app we'll have to fill it with some test data.
+
+```shell
+make populate
+```
+
 ### Running the dev servers
 
 Backend:
