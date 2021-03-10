@@ -1,5 +1,5 @@
 data = {
-    "ingredients":[
+    "ingredients": [
         {
             "name": "salt"
         },

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Ingredient(models.Model):
     name = models.CharField(max_length=50, unique=True)
 
@@ -10,6 +11,7 @@ class Ingredient(models.Model):
     def save(self, *args, **kwargs):
         self.name = self.name.lower()
         super().save(*args, **kwargs)
+
 
 class Drink(models.Model):
     name = models.CharField(max_length=100)
