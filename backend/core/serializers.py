@@ -38,3 +38,11 @@ class DrinkSerializer(serializers.ModelSerializer):
             'instructions',
             'ingredients'
         ]
+
+    def create(self, validated_data):
+        drink_ingredients = validated_data.pop('drinkingredient_set')
+        drink = Drink.objects.create(**validated_data)
+        for ing in drink_ingredients:
+            DrinkIngredient.objects.create(drink=drink, **ing)
+
+        return drink
