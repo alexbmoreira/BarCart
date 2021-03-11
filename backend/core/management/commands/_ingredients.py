@@ -1,6 +1,9 @@
 data = {
     "ingredients": [
         {
+            "name": "mint"
+        },
+        {
             "name": "salt"
         },
         {
