@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import DrinkLike, Profile
+
+admin.site.register(DrinkLike)
+admin.site.register(Profile)
