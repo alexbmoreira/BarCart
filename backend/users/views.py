@@ -35,4 +35,3 @@ class DrinkLikeView(APIView):
         unlike = get_object_or_404(DrinkLike, id=request.data['id'], user=request.user)
         unlike.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-

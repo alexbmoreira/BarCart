@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import ProfileDetailView, DrinkLikeView
+from .views import DrinkLikeView, ProfileDetailView
 
 profile_detail = ProfileDetailView.as_view()
 drink_like = DrinkLikeView.as_view()
