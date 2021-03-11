@@ -21,7 +21,7 @@ class ProfileDetailView(APIView):
 class OnHandIngredientView(APIView):
     permission_classes = (IsAuthenticated,)
 
-    def post(self, request): 
+    def post(self, request):
         ing = request.data
         ing['user'] = request.user.id
         serializer = OnHandIngredientSerializer(data=ing)

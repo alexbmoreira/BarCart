@@ -25,7 +25,8 @@ class ProfileSerializer(serializers.ModelSerializer):
     last_name = serializers.ReadOnlyField(source='user.last_name')
     drinks = DrinkSerializer(many=True, source='user.drink_set.all')
     likes = DrinkLikeSerializer(many=True, source='user.drinklike_set.all')
+    on_hand = OnHandIngredientSerializer(many=True, source='user.onhandingredient_set.all')
 
     class Meta:
         model = Profile
-        fields = ['user_id', 'username', 'first_name', 'last_name', 'bio', 'drinks', 'likes']
+        fields = ['user_id', 'username', 'first_name', 'last_name', 'bio', 'drinks', 'likes', 'on_hand']
