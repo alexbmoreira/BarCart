@@ -1,12 +1,16 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-from .views import DrinkViewSet, IngredientViewSet
+from .views import DrinkListView, DrinkDetailView, IngredientListView, IngredientDetailView
 
-router = DefaultRouter()
-router.register('ingredients', IngredientViewSet)
-router.register('drinks', DrinkViewSet)
+drink_detail = DrinkDetailView.as_view()
+drink_list = DrinkListView.as_view()
+ingredient_detail = IngredientDetailView.as_view()
+ingredient_list = IngredientListView.as_view()
 
 urlpatterns = [
-    path('', include(router.urls))
+    path("drinks/", drink_list, name="drink_list"),
+    path("drinks/<int:drink_id>", drink_detail, name="drink_detail"),
+    path("ingredients/", ingredient_list, name="ingredient_list"),
+    path("ingredients/<int:ingredient_id>", ingredient_detail, name="ingredient_detail"),
 ]
