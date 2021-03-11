@@ -1,6 +1,6 @@
-from django.db import models
+from core.models import Drink, Ingredient
 from django.contrib.auth.models import User
-from core.models import Drink
+from django.db import models
 
 
 class Profile(models.Model):
@@ -16,4 +16,12 @@ class DrinkLike(models.Model):
     drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ["user", "drink"]
+        unique_together = ['user', 'drink']
+
+
+class OnHandIngredient(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ['user', 'ingredient']

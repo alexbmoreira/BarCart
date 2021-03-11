@@ -1,7 +1,7 @@
 from core.serializers import DrinkSerializer
 from rest_framework import serializers
 
-from .models import DrinkLike, Profile
+from .models import DrinkLike, OnHandIngredient, Profile
 
 
 class DrinkLikeSerializer(serializers.ModelSerializer):
@@ -9,6 +9,13 @@ class DrinkLikeSerializer(serializers.ModelSerializer):
     class Meta:
         model = DrinkLike
         fields = ("id", "user", "drink")
+
+
+class OnHandIngredientSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = OnHandIngredient
+        fields = ("id", "user", "ingredient")
 
 
 class ProfileSerializer(serializers.ModelSerializer):

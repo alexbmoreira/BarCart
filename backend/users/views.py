@@ -4,8 +4,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import DrinkLike, Profile
-from .serializers import DrinkLikeSerializer, ProfileSerializer
+from .models import DrinkLike, OnHandIngredient, Profile
+from .serializers import (DrinkLikeSerializer, OnHandIngredientSerializer,
+                          ProfileSerializer)
 
 
 class ProfileDetailView(APIView):
@@ -15,6 +16,26 @@ class ProfileDetailView(APIView):
         profile = get_object_or_404(Profile, user__id=user_id)
         serializer = ProfileSerializer(profile)
         return Response(serializer.data)
+
+
+class OnHandIngredientView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request): 
+        ing = request.data
+        ing['user'] = request.user.id
+        serializer = OnHandIngredientSerializer(data=ing)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_201_CREATED)
+
+        return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request):
+        ing = get_object_or_404(OnHandIngredient, id=request.data['id'], user=request.user)
+        ing.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class DrinkLikeView(APIView):
