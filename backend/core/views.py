@@ -11,8 +11,11 @@ from .serializers import DrinkSerializer, IngredientSerializer
 class IngredientListView(APIView):
     permission_classes = (IsAuthenticated,)
 
-    def get(self, request):
-        ingredients = Ingredient.objects.all()
+    def get(self, request, search=''):
+        if search != '':
+            ingredients = Ingredient.objects.filter(name__icontains=search)
+        else:
+            ingredients = Ingredient.objects.all()
         serializer = IngredientSerializer(ingredients, many=True)
         return Response(serializer.data)
 
