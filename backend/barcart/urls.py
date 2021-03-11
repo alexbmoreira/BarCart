@@ -21,6 +21,7 @@ pass_reset = PasswordResetConfirmView.as_view()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('core.urls')),
     path('api/rest-auth/', include('rest_auth.urls')),
     path('api/rest-auth/register/', include('rest_auth.registration.urls')),
     re_path(r'^rest-auth/password/reset/confirm/(?P<uidb64>(\d|\w)+)/(?P<token>(\d|\w)+-(\d|\w)+)/$',

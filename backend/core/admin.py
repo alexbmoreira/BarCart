@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Ingredient, Drink, DrinkIngredient
+from .models import Drink, DrinkIngredient, Ingredient
 
 admin.site.register(Ingredient)
 admin.site.register(Drink)
