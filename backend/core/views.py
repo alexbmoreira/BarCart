@@ -51,6 +51,11 @@ class DrinkListView(APIView):
 
         return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    def delete(self, request):
+        drink = get_object_or_404(Drink, id=request.data['id'], creator=request.user)
+        drink.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 class DrinkDetailView(APIView):
     permission_classes = (IsAuthenticated,)
