@@ -40,6 +40,22 @@ class DrinkListView(APIView):
         serializer = DrinkSerializer(drinks, many=True)
         return Response(serializer.data)
 
+    def post(self, request):
+        drink = request.data
+        drink['creator'] = request.user.id
+        serializer = DrinkSerializer(data=drink)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_201_CREATED)
+
+        return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request):
+        drink = get_object_or_404(Drink, id=request.data['id'], creator=request.user)
+        drink.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 class DrinkDetailView(APIView):
     permission_classes = (IsAuthenticated,)
