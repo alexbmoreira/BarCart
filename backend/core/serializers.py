@@ -22,7 +22,19 @@ class DrinkIngredientSerializer(serializers.ModelSerializer):
 class DrinkSerializer(serializers.ModelSerializer):
 
     ingredients = DrinkIngredientSerializer(source='drinkingredient_set', many=True)
+    creator_fname = serializers.CharField(read_only=True, source='creator.first_name')
+    creator_lname = serializers.CharField(read_only=True, source='creator.last_name')
+    creator_username = serializers.CharField(read_only=True, source='creator.username')
 
     class Meta:
         model = Drink
-        fields = ['name', 'instructions', 'ingredients']
+        fields = [
+            'id',
+            'name',
+            'creator',
+            'creator_fname',
+            'creator_lname',
+            'creator_username',
+            'instructions',
+            'ingredients'
+        ]
