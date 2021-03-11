@@ -29,8 +29,11 @@ class IngredientDetailView(APIView):
 class DrinkListView(APIView):
     permission_classes = (IsAuthenticated,)
 
-    def get(self, request):
-        drinks = Drink.objects.all()
+    def get(self, request, search=''):
+        if search != '':
+            drinks = Drink.objects.filter(name__icontains=search)
+        else:
+            drinks = Drink.objects.all()
         serializer = DrinkSerializer(drinks, many=True)
         return Response(serializer.data)
 
