@@ -13,11 +13,11 @@ class Command(BaseCommand):
         try:
             self.populate_ingredients()
         except Exception as e:
-                print(e)
+            print(e)
         try:
             self.populate_drinks()
         except Exception as e:
-                print(e)
+            print(e)
 
     def populate_ingredients(self):
         ingredients = []
@@ -63,6 +63,6 @@ class Command(BaseCommand):
                 print(e)
 
         DrinkIngredient.objects.bulk_create(drink_ingredients, ignore_conflicts=True)
-    
+
     def create_barcart(self):
         User.objects.create(username='BarCart', email='barcart@barcart.com')
