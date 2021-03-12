@@ -22,9 +22,8 @@ class OnHandIngredientView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def post(self, request):
-        ing = request.data
-        ing['user'] = request.user.id
-        serializer = OnHandIngredientSerializer(data=ing)
+        ingredients = [dict(ingredient, **{'user': request.user.id}) for ingredient in request.data]
+        serializer = OnHandIngredientSerializer(data=ingredients, many=True)
 
         if serializer.is_valid():
             serializer.save()
@@ -33,7 +32,7 @@ class OnHandIngredientView(APIView):
         return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request):
-        ing = get_object_or_404(OnHandIngredient, id=request.data['id'], user=request.user)
+        ing = get_object_or_404(OnHandIngredient, ingredient__id=request.data['id'], user=request.user)
         ing.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
