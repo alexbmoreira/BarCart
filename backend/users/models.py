@@ -2,10 +2,14 @@ from core.models import Drink, Ingredient
 from django.contrib.auth.models import User
 from django.db import models
 
+from .managers import ProfileManager
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.CharField(max_length=140)
+
+    objects = ProfileManager()
 
     def __str__(self):
         return self.user.username
@@ -25,3 +29,6 @@ class OnHandIngredient(models.Model):
 
     class Meta:
         unique_together = ['user', 'ingredient']
+
+    def __str__(self):
+        return f"{self.ingredient} for {self.user}"

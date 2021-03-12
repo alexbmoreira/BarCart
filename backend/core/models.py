@@ -19,6 +19,9 @@ class Drink(models.Model):
     ingredients = models.ManyToManyField(Ingredient, through="DrinkIngredient")
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    class Meta:
+        unique_together = ["creator", "name"]
+
     def __str__(self):
         return self.name
 

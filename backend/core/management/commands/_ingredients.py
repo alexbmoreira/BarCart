@@ -1,6 +1,21 @@
 data = {
     "ingredients": [
         {
+            "name": "brown sugar"
+        },
+        {
+            "name": "drambuie"
+        },
+        {
+            "name": "scotch whiskey"
+        },
+        {
+            "name": "bourbon whiskey"
+        },
+        {
+            "name": "orange juice"
+        },
+        {
             "name": "mint"
         },
         {
