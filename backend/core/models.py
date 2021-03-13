@@ -18,6 +18,7 @@ class Drink(models.Model):
     instructions = models.TextField(blank=True, default="")
     ingredients = models.ManyToManyField(Ingredient, through="DrinkIngredient")
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
+    popularity = models.FloatField(default=0)
 
     class Meta:
         unique_together = ["creator", "name"]
