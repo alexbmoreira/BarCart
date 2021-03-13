@@ -32,8 +32,9 @@ class OnHandIngredientView(APIView):
         return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request):
-        ing = get_object_or_404(OnHandIngredient, ingredient__id=request.data['id'], user=request.user)
-        ing.delete()
+        for ingredient in request.data:
+            ing = get_object_or_404(OnHandIngredient, ingredient__id=ingredient['ingredient'], user=request.user)
+            ing.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
