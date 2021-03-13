@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 
-from .models import OnHandIngredient, OnTapDrink, Profile
+from .models import DrinkLike, OnHandIngredient, OnTapDrink, Profile
 
 
 @receiver(post_save, sender=User)
@@ -32,3 +32,15 @@ def delete_on_hand(sender, instance, **kwargs):
         ingredients = drink.drink.drinkingredient_set.prefetch_related('ingredient')
         if instance.ingredient in [ing.ingredient for ing in ingredients]:
             drink.delete()
+
+
+@receiver(post_save, sender=DrinkLike)
+def save_drink_like(sender, instance, **kwargs):
+    instance.drink.popularity += 0.1
+    instance.drink.save()
+
+
+@receiver(post_delete, sender=DrinkLike)
+def delete_drink_like(sender, instance, **kwargs):
+    instance.drink.popularity -= 0.1
+    instance.drink.save()
