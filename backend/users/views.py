@@ -53,6 +53,6 @@ class DrinkLikeView(APIView):
         return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request):
-        unlike = get_object_or_404(DrinkLike, id=request.data['id'], user=request.user)
+        unlike = get_object_or_404(DrinkLike, drink__id=request.data['drink'], user=request.user)
         unlike.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

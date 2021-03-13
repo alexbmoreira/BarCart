@@ -57,6 +57,15 @@ class DrinkListView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+class DrinkPopularView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        drinks = Drink.objects.by_popularity()
+        serializer = DrinkSerializer(drinks, many=True)
+        return Response(serializer.data)
+
+
 class DrinkDetailView(APIView):
     permission_classes = (IsAuthenticated,)
 

@@ -36,7 +36,8 @@ class DrinkSerializer(serializers.ModelSerializer):
             'creator_lname',
             'creator_username',
             'instructions',
-            'ingredients'
+            'ingredients',
+            'popularity'
         ]
 
     def create(self, validated_data):
