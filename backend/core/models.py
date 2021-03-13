@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from .managers import DrinkManager
+
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -19,6 +21,8 @@ class Drink(models.Model):
     ingredients = models.ManyToManyField(Ingredient, through="DrinkIngredient")
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
     popularity = models.FloatField(default=0)
+
+    objects = DrinkManager()
 
     class Meta:
         unique_together = ["creator", "name"]
