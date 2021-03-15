@@ -31,7 +31,7 @@ class OnHandIngredient(models.Model):
         unique_together = ['user', 'ingredient']
 
     def __str__(self):
-        return f"{self.ingredient} for {self.user}"
+        return f'{self.ingredient} for {self.user}'
 
 
 class OnTapDrink(models.Model):
@@ -42,4 +42,4 @@ class OnTapDrink(models.Model):
         unique_together = ['user', 'drink']
 
     def __str__(self):
-        return f"{self.drink} on tap for {self.user}"
+        return f'{self.drink} on tap for {self.user}'

@@ -22,5 +22,8 @@ migrate:
 populate:
 	$(BACKEND) python manage.py populate
 
+test:
+	$(BACKEND) python manage.py test $(app)
+
 lint:
 	scripts/lint.sh

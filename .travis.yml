@@ -1,11 +1,23 @@
 language: python
+
 python:
-  - "3.6"
-  - "3.7"
   - "3.8"
+
+addons:
+  - postgresql: "9.5"
+
+before_script:
+  - createdb barcart
+  - make migrate
+
 # install dependencies
 install:
   - make install-b
+
 # lint
 script:
   - make lint
+
+# test
+script:
+  - make test
