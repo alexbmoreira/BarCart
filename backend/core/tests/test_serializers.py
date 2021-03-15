@@ -64,11 +64,11 @@ class DrinkSerializerTests(TestCase):
         # Assert
         self.assertIsNotNone(drink)
         drink_ingredients = drink.drinkingredient_set.all()
-        self.assertEqual(1, drink_ingredients.count())
-        self.assertEqual(i.id, drink_ingredients.first().ingredient_id)
-        self.assertEqual(drink.id, drink_ingredients.first().drink.id)
-        self.assertEqual(5, drink_ingredients.first().quantity)
-        self.assertEqual('oz', drink_ingredients.first().units)
+        self.assertEqual(drink_ingredients.count(), 1)
+        self.assertEqual(drink_ingredients.first().ingredient_id, i.id)
+        self.assertEqual(drink_ingredients.first().drink.id, drink.id)
+        self.assertEqual(drink_ingredients.first().quantity, 5)
+        self.assertEqual(drink_ingredients.first().units, 'oz')
 
     def test_CreateInvalid_NoName(self):
         # Arrange
