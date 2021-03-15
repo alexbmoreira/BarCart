@@ -13,15 +13,15 @@ source ../.venv/bin/activate
 
 ### Installing dependencies
 
-Backend:
+*Backend:*
 ```shell
 make install-b
 ```
 
-<!-- Frontend:
+*Frontend:*
 ```shell
 make install-fe
-``` -->
+```
 
 ### Create the database
 
@@ -53,17 +53,20 @@ make populate
 
 ### Running the dev servers
 
-Backend:
+*Backend:*
 ```shell
 make run-b
 ```
 > Server will be running on port 8000
 
-<!-- Frontend:
+*Frontend:*
+
+Run either of the following to run the app on the expo client on your preferred device:
 ```shell
-make run-frontend
+make run-ios
+make run-android
 ```
-> Server will be running on port 8080 -->
+> Server will be running on port 8080
 
 ### Linting backend
 
