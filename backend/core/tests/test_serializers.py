@@ -20,3 +20,17 @@ class IngredientSerializerTests(TestCase):
         # Assert
         self.assertIsNotNone(ing)
         self.assertEqual(ing.name, 'vodka')
+
+    def test_CreateInvalid(self):
+        # Arrange
+        ingredient = {
+            'name': ''
+        }
+        serializer = IngredientSerializer(data=ingredient)
+
+        # Act
+        serializer.is_valid()
+        errors = serializer.errors
+
+        # Assert
+        self.assertIsNotNone(errors['name'])
