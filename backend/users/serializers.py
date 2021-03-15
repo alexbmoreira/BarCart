@@ -8,21 +8,21 @@ class DrinkLikeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = DrinkLike
-        fields = ("id", "user", "drink")
+        fields = ('id', 'user', 'drink')
 
 
 class OnHandIngredientSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = OnHandIngredient
-        fields = ("id", "user", "ingredient")
+        fields = ('id', 'user', 'ingredient')
 
 
 class OnTapDrinkSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = OnTapDrink
-        fields = ("id", "user", "drink")
+        fields = ('id', 'user', 'drink')
 
 
 class ProfileSerializer(serializers.ModelSerializer):
