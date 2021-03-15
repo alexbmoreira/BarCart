@@ -1,32 +1,33 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 
-from ..serializers import IngredientSerializer
+from ..models import Ingredient
+from ..serializers import DrinkSerializer, IngredientSerializer
 
 
 class IngredientSerializerTests(TestCase):
 
     def test_CreateValid(self):
         # Arrange
-        ingredient = {
+        i = {
             'name': 'vodka'
         }
-        serializer = IngredientSerializer(data=ingredient)
+        serializer = IngredientSerializer(data=i)
 
         # Act
         serializer.is_valid()
-        ing = serializer.save()
+        ingredient = serializer.save()
 
         # Assert
-        self.assertIsNotNone(ing)
-        self.assertEqual(ing.name, 'vodka')
+        self.assertIsNotNone(ingredient)
+        self.assertEqual(ingredient.name, 'vodka')
 
     def test_CreateInvalid(self):
         # Arrange
-        ingredient = {
+        i = {
             'name': ''
         }
-        serializer = IngredientSerializer(data=ingredient)
+        serializer = IngredientSerializer(data=i)
 
         # Act
         serializer.is_valid()
@@ -34,3 +35,83 @@ class IngredientSerializerTests(TestCase):
 
         # Assert
         self.assertIsNotNone(errors['name'])
+
+
+class DrinkSerializerTests(TestCase):
+
+    def test_CreateValid(self):
+        # Arrange
+        user = User.objects.create_user(username='username', first_name='user', last_name='name')
+        i = Ingredient.objects.create(name='vodka')
+        d = {
+            'name': 'Vodka Drink',
+            'creator': user.id,
+            'creator_fname': user.first_name,
+            'creator_lname': user.last_name,
+            'creator_username': user.username,
+            'instructions': 'Make vodka drink',
+            'ingredients': [
+                {'ingredient': i.id, 'quantity': 5, 'units': 'oz'},
+            ],
+            'popularity': 0
+        }
+        serializer = DrinkSerializer(data=d)
+
+        # Act
+        serializer.is_valid()
+        drink = serializer.save()
+
+        # Assert
+        self.assertIsNotNone(drink)
+        drink_ingredients = drink.drinkingredient_set.all()
+        self.assertEqual(1, drink_ingredients.count())
+        self.assertEqual(i.id, drink_ingredients.first().ingredient_id)
+        self.assertEqual(drink.id, drink_ingredients.first().drink.id)
+        self.assertEqual(5, drink_ingredients.first().quantity)
+        self.assertEqual('oz', drink_ingredients.first().units)
+
+    def test_CreateInvalid_NoName(self):
+        # Arrange
+        user = User.objects.create_user(username='username', first_name='user', last_name='name')
+        i = Ingredient.objects.create(name='vodka')
+        d = {
+            'name': '',
+            'creator': user.id,
+            'creator_fname': user.first_name,
+            'creator_lname': user.last_name,
+            'creator_username': user.username,
+            'instructions': 'Make vodka drink',
+            'ingredients': [
+                {'ingredient': i.id, 'quantity': 5, 'units': 'oz'},
+            ],
+            'popularity': 0
+        }
+        serializer = DrinkSerializer(data=d)
+
+        # Act
+        serializer.is_valid()
+        errors = serializer.errors
+
+        # Assert
+        self.assertIsNotNone(errors['name'])
+
+    def test_CreateInvalid_NoIngredient(self):
+        # Arrange
+        user = User.objects.create_user(username='username', first_name='user', last_name='name')
+        d = {
+            'name': '',
+            'creator': user.id,
+            'creator_fname': user.first_name,
+            'creator_lname': user.last_name,
+            'creator_username': user.username,
+            'instructions': 'Make vodka drink',
+            'popularity': 0
+        }
+        serializer = DrinkSerializer(data=d)
+
+        # Act
+        serializer.is_valid()
+        errors = serializer.errors
+
+        # Assert
+        self.assertIsNotNone(errors['ingredients'])
