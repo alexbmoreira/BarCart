@@ -17,15 +17,15 @@ class Ingredient(models.Model):
 
 class Drink(models.Model):
     name = models.CharField(max_length=100)
-    instructions = models.TextField(blank=True, default="")
-    ingredients = models.ManyToManyField(Ingredient, through="DrinkIngredient")
+    instructions = models.TextField(blank=True, default='')
+    ingredients = models.ManyToManyField(Ingredient, through='DrinkIngredient')
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
     popularity = models.FloatField(default=0)
 
     objects = DrinkManager()
 
     class Meta:
-        unique_together = ["creator", "name"]
+        unique_together = ['creator', 'name']
 
     def __str__(self):
         return self.name
@@ -37,9 +37,9 @@ class DrinkIngredient(models.Model):
     tbsp = 'tbsp'
 
     UNITS = [
-        (ounce, "oz"),
-        (tsp, "tsp"),
-        (tbsp, "tbsp"),
+        (ounce, 'oz'),
+        (tsp, 'tsp'),
+        (tbsp, 'tbsp'),
     ]
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
@@ -47,10 +47,7 @@ class DrinkIngredient(models.Model):
     units = models.CharField(choices=UNITS, max_length=20)
 
     class Meta:
-        unique_together = ["ingredient", "drink"]
+        unique_together = ['ingredient', 'drink']
 
     def __str__(self):
-        return (
-            f"{self.quantity} {self.units} "
-            f"of {self.ingredient} for {self.drink}"
-        )
+        return f'{self.quantity} {self.units} of {self.ingredient} for {self.drink}'

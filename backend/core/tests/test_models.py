@@ -1,17 +1,17 @@
 from django.test import TestCase
 
-from ..models import Drink, DrinkIngredient, Ingredient
+from ..models import Ingredient
 
 
 class IngredientTests(TestCase):
 
     def test_NameToLowerCase(self):
         # Arrange
-        name = "Vodka"
+        name = 'Vodka'
         ingredient = Ingredient(name=name)
 
         # Act
         ingredient.save()
 
         # Assert
-        self.assertEqual(ingredient.name, "vodka")
+        self.assertEqual(ingredient.name, 'vodka')
