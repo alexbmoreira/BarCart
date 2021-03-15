@@ -1,8 +1,6 @@
 language: python
 
 python:
-  - "3.6"
-  - "3.7"
   - "3.8"
 
 addons:
@@ -12,10 +10,14 @@ before_script:
   - createdb barcart
   - make migrate
 
-  # install dependencies
+# install dependencies
 install:
   - make install-b
 
-  # lint
+# lint
 script:
   - make lint
+
+# test
+script:
+  - make test
