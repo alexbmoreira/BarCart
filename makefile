@@ -30,3 +30,6 @@ lint-b:
 
 lint-f:
 	$(FRONTEND) npm run lint
+
+win-lint:
+	$(BACKEND) python -m flake8 --config=.flake8
