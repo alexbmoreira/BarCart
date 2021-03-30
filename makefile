@@ -10,11 +10,8 @@ install-f:
 run-b:
 	$(BACKEND) python manage.py runserver
 
-run-ios:
-	$(FRONTEND) npm run ios
-
-run-android:
-	$(FRONTEND) npm run android
+run-f:
+	$(FRONTEND) npm run start
 
 migrate:
 	$(BACKEND) python manage.py makemigrations $(app) && python manage.py migrate $(app)

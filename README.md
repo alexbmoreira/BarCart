@@ -60,13 +60,9 @@ make run-b
 > Server will be running on port 8000
 
 **Frontend:**
-
-Run either of the following to run the app on the expo client on your preferred device:
 ```shell
-make run-ios
-make run-android
+make run-f
 ```
-> Server will be running on port 8080
 
 ### Linting
 
