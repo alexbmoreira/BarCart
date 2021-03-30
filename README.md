@@ -13,12 +13,12 @@ source ../.venv/bin/activate
 
 ### Installing dependencies
 
-*Backend:*
+**Backend:**
 ```shell
 make install-b
 ```
 
-*Frontend:*
+**Frontend:**
 ```shell
 make install-fe
 ```
@@ -53,13 +53,13 @@ make populate
 
 ### Running the dev servers
 
-*Backend:*
+**Backend:**
 ```shell
 make run-b
 ```
 > Server will be running on port 8000
 
-*Frontend:*
+**Frontend:**
 
 Run either of the following to run the app on the expo client on your preferred device:
 ```shell
@@ -70,21 +70,21 @@ make run-android
 
 ### Linting
 
-*Backend:*
+**Backend:**
 ```shell
 make lint-b
 ```
 
-*Frontend:*
+**Frontend:**
 ```shell
 make lint-f
 ```
 
-*Backend (Windows):*
+**Backend (Windows):**
 ```shell
 make win-lint
 ```
-> Untested
+> This command is untested
 
 ### Running tests
 
