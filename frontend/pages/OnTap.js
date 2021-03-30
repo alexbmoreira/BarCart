@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Content, Text } from 'native-base';
 
-export default function Home() {
+export default function OnTap() {
   return (
     <Container>
       <Content>

@@ -13,6 +13,10 @@
           "warn",
           2
         ],
+        "jsx-quotes": [
+          "error",
+          "prefer-double"
+        ],
         "no-multi-spaces": [
           "warn"
         ],
