@@ -1,23 +1,38 @@
-language: python
 
-python:
-  - "3.8"
+jobs:
+  include:
+    - name: backend
+      language: python
 
-addons:
-  - postgresql: "9.5"
+      python:
+        - "3.8"
 
-before_script:
-  - createdb barcart
-  - make migrate
+      addons:
+        - postgresql: "9.5"
 
-# install dependencies
-install:
-  - make install-b
+      before_script:
+        - createdb barcart
+        - make migrate
 
-# lint
-script:
-  - make lint
+      # install dependencies
+      install:
+        - make install-b
 
-# test
-script:
-  - make test
+      # lint backend then test
+      script:
+        - make lint-b
+        - make test
+
+    - name: frontend
+      language: node_js
+
+      node_js:
+        - "14"
+
+      # install dependencies
+      install:
+        - cd frontend && npm ci && cd ..
+
+      # lint frontend
+      script:
+        - make lint-f
