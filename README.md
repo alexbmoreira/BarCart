@@ -74,8 +74,8 @@ make run-android
 make lint
 ```
 
-<!-- ### Running tests
+### Running tests
 
 ```shell
 make test
-``` -->
+```
