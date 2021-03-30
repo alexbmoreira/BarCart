@@ -6,7 +6,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "lint": "eslint . --ext .js"
+    "lint": "./node_modules/.bin/eslint . --ext .js --max-warnings=0"
   },
   "dependencies": {
     "@react-native-community/eslint-config": "^2.0.0",

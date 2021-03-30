@@ -25,5 +25,8 @@ populate:
 test:
 	$(BACKEND) python manage.py test $(app)
 
-lint:
+lint-b:
 	scripts/lint.sh
+
+lint-f:
+	$(FRONTEND) npm run lint
