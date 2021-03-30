@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
+import { Container, Header, Title, Content, Button, Left, Right, Body, Icon, Text } from 'native-base';
 
 export default class App extends Component {
   render() {
@@ -8,7 +8,7 @@ export default class App extends Component {
         <Header>
           <Left>
             <Button transparent>
-              <Icon name='menu' />
+              <Icon name="menu" />
             </Button>
           </Left>
           <Body>
@@ -17,9 +17,7 @@ export default class App extends Component {
           <Right />
         </Header>
         <Content>
-          <Text>
-            This is Content Section
-          </Text>
+          <Text>This is Content Section</Text>
         </Content>
       </Container>
     );

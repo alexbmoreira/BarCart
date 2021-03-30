@@ -1,0 +1,23 @@
+{
+    "extends": "@react-native-community",
+    "rules": {
+        "prettier/prettier": [
+          "warn",
+          {
+            "singleQuote": true,
+            "quoteProps": "consistent",
+            "printWidth": 250
+          }
+        ],
+        "indent": [
+          "warn",
+          2
+        ],
+        "no-multi-spaces": [
+          "warn"
+        ],
+        "camelcase": [
+          "warn"
+        ]
+    }
+}
