@@ -68,11 +68,23 @@ make run-android
 ```
 > Server will be running on port 8080
 
-### Linting backend
+### Linting
 
+*Backend:*
 ```shell
-make lint
+make lint-b
 ```
+
+*Frontend:*
+```shell
+make lint-f
+```
+
+*Backend (Windows):*
+```shell
+make win-lint
+```
+> Untested
 
 ### Running tests
 
