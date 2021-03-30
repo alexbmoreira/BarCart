@@ -79,3 +79,43 @@ make lint
 ```shell
 make test
 ```
+
+<!-- ## Contributing
+
+After setting the app up you'll have to configure some local settings:
+
+### Backend environment variables
+
+In the `.backend` folder, add a `.env` file and put in some variables for `SECRET_KEY` and `DEBUG`.
+
+```
+SECRET_KEY='secretkey'
+DEBUG=True
+```
+
+### ESLint on save
+
+> Must be using VSCode.
+
+Install the [ESLint extension for VSCode](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+Add the following settings to `.vscode/settings.json`:
+
+```
+{   
+    ...
+
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+    ],
+    "eslint.workingDirectories": [
+      "./frontend"
+    ]
+
+    ...
+}
+``` -->
