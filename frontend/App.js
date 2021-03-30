@@ -1,25 +1,24 @@
-import React, { Component } from 'react';
-import { Container, Header, Title, Content, Button, Left, Right, Body, Icon, Text } from 'native-base';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Home from './pages/Home';
+import OnTap from './pages/OnTap';
+import CreateDrink from './pages/CreateDrink';
+import Profile from './pages/Profile';
+import Search from './pages/Search';
 
-export default class App extends Component {
-  render() {
-    return (
-      <Container>
-        <Header>
-          <Left>
-            <Button transparent>
-              <Icon name="menu" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Header</Title>
-          </Body>
-          <Right />
-        </Header>
-        <Content>
-          <Text>This is Content Section</Text>
-        </Content>
-      </Container>
-    );
-  }
+const Tab = createBottomTabNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="OnTap" component={OnTap} />
+        <Tab.Screen name="CreateDrink" component={CreateDrink} />
+        <Tab.Screen name="Profile" component={Profile} />
+        <Tab.Screen name="Search" component={Search} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
 }
