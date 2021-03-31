@@ -4,13 +4,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Provider as PaperProvider } from 'react-native-paper';
 
-import Home from './pages/Home';
-import OnTap from './pages/OnTap';
-import CreateDrink from './pages/CreateDrink';
-import Profile from './pages/Profile';
-import Search from './pages/Search';
-import Login from './pages/Login';
-import Register from './pages/Register';
+import Home from './src/pages/Home';
+import OnTap from './src/pages/OnTap';
+import CreateDrink from './src/pages/CreateDrink';
+import Profile from './src/pages/Profile';
+import Search from './src/pages/Search';
+import Login from './src/pages/Login';
+import Register from './src/pages/Register';
+import BarCartTheme from './src/BarCartTheme';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -40,7 +41,7 @@ function App() {
 }
 
 export default () => (
-  <PaperProvider>
+  <PaperProvider theme={BarCartTheme.theme}>
     <App />
   </PaperProvider>
 );
