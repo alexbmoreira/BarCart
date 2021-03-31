@@ -1,12 +1,10 @@
 import React from 'react';
-import { Container, Content, Text } from 'native-base';
+import { Card, Text } from 'react-native-paper';
 
 export default function Home() {
   return (
-    <Container>
-      <Content>
-        <Text>Create Drink</Text>
-      </Content>
-    </Container>
+    <Card>
+      <Text>Create Drink</Text>
+    </Card>
   );
 }

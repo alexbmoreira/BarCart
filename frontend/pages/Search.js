@@ -1,12 +1,10 @@
 import React from 'react';
-import { Container, Content, Text } from 'native-base';
+import { Card, Text } from 'react-native-paper';
 
 export default function Search() {
   return (
-    <Container>
-      <Content>
-        <Text>Search</Text>
-      </Content>
-    </Container>
+    <Card>
+      <Text>Search</Text>
+    </Card>
   );
 }

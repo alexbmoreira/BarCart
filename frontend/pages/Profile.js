@@ -1,12 +1,10 @@
 import React from 'react';
-import { Container, Content, Text } from 'native-base';
+import { Card, Text } from 'react-native-paper';
 
 export default function Profile() {
   return (
-    <Container>
-      <Content>
-        <Text>Profile</Text>
-      </Content>
-    </Container>
+    <Card>
+      <Text>Profile</Text>
+    </Card>
   );
 }

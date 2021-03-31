@@ -1,12 +1,10 @@
 import React from 'react';
-import { Container, Content, Text } from 'native-base';
+import { Card, Text } from 'react-native-paper';
 
 export default function OnTap() {
   return (
-    <Container>
-      <Content>
-        <Text>On Tap</Text>
-      </Content>
-    </Container>
+    <Card>
+      <Text>On Tap</Text>
+    </Card>
   );
 }

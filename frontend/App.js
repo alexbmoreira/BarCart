@@ -2,6 +2,8 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Provider as PaperProvider } from 'react-native-paper';
+
 import Home from './pages/Home';
 import OnTap from './pages/OnTap';
 import CreateDrink from './pages/CreateDrink';
@@ -37,4 +39,8 @@ function App() {
   );
 }
 
-export default App;
+export default () => (
+  <PaperProvider>
+    <App />
+  </PaperProvider>
+);
