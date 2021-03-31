@@ -28,7 +28,7 @@ function MainTabs() {
   );
 }
 
-function App() {
+function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -40,8 +40,10 @@ function App() {
   );
 }
 
-export default () => (
-  <PaperProvider theme={BarCartTheme.theme}>
-    <App />
-  </PaperProvider>
-);
+export default function App() {
+  return (
+    <PaperProvider theme={BarCartTheme.theme}>
+      <AppNavigator />
+    </PaperProvider>
+  );
+}
