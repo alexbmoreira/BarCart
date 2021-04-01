@@ -41,7 +41,6 @@ const login = (dispatch) => {
       await AsyncStorage.setItem('access_token', response.data.key);
       dispatch({ type: 'add_token', payload: response.data.key });
     } catch (e) {
-      console.log(e.response.data);
       dispatch({ type: 'add_error', payload: 'Oops! Something went wrong while logging in!' });
     }
   };
