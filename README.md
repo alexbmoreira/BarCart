@@ -64,6 +64,29 @@ make run-b
 make run-f
 ```
 
+### Setting up ngrok
+
+ngrok needs to be active in order to communicate from your device to the backend server running on `localhost:8000`.
+> Note: ngrok needs to be restarted every 8 hours if using a free version.
+
+Start ngrok:
+
+```shell
+ngrok http 8000
+```
+
+Add ngrok to `ALLOWED_HOSTS` through the `.env` file (Don't include `http://`).
+
+```
+NGROK_HOST='<ngrok URL>'
+```
+
+Update `baseURL` via `frontend/.env`.
+
+```
+NGROK_HOST=<ngrok URL>
+```
+
 ### Linting
 
 **Backend:**
@@ -88,7 +111,7 @@ make win-lint
 make test
 ```
 
-<!-- ## Contributing
+## Local Setup
 
 After setting the app up you'll have to configure some local settings:
 
@@ -126,4 +149,4 @@ Add the following settings to `.vscode/settings.json`:
 
     ...
 }
-``` -->
+```

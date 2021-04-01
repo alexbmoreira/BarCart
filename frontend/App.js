@@ -2,13 +2,18 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import Home from './pages/Home';
-import OnTap from './pages/OnTap';
-import CreateDrink from './pages/CreateDrink';
-import Profile from './pages/Profile';
-import Search from './pages/Search';
-import Login from './pages/Login';
-import Register from './pages/Register';
+import { Provider as PaperProvider } from 'react-native-paper';
+
+import Home from './src/pages/Home';
+import OnTap from './src/pages/OnTap';
+import CreateDrink from './src/pages/CreateDrink';
+import Profile from './src/pages/Profile';
+import Search from './src/pages/Search';
+import Login from './src/pages/Login';
+import Register from './src/pages/Register';
+import BarCartTheme from './src/BarCartTheme';
+
+import { Provider as AuthProvider } from './src/contexts/AuthContext';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -25,7 +30,7 @@ function MainTabs() {
   );
 }
 
-function App() {
+function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -37,4 +42,12 @@ function App() {
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <AuthProvider>
+      <PaperProvider theme={BarCartTheme.theme}>
+        <AppNavigator />
+      </PaperProvider>
+    </AuthProvider>
+  );
+}
