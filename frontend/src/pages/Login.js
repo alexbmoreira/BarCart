@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { View } from 'react-native';
 import { Text, Button, TextInput } from 'react-native-paper';
 
 import { Context as AuthContext } from '../contexts/AuthContext';
 
 export default function Login({ navigation }) {
-  const { state, login } = useContext(AuthContext);
+  const { state, login, clearError } = useContext(AuthContext);
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -14,6 +14,12 @@ export default function Login({ navigation }) {
     login({ username, password });
     navigation.navigate('Main');
   };
+
+  useEffect(() => {
+    navigation.addListener('focus', (e) => {
+      clearError();
+    });
+  }, [navigation, clearError]);
 
   return (
     <View>

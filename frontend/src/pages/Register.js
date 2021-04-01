@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { View } from 'react-native';
 import { Text, Button, TextInput } from 'react-native-paper';
 
 import { Context as AuthContext } from '../contexts/AuthContext';
 
 export default function Register({ navigation }) {
-  const { state, register } = useContext(AuthContext);
+  const { state, register, clearError } = useContext(AuthContext);
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -18,6 +18,12 @@ export default function Register({ navigation }) {
     register({ firstName, lastName, username, email, password, confirmPassword });
     navigation.navigate('Main');
   };
+
+  useEffect(() => {
+    navigation.addListener('focus', (e) => {
+      clearError();
+    });
+  }, [navigation, clearError]);
 
   return (
     <View>
