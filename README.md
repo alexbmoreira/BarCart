@@ -64,6 +64,31 @@ make run-b
 make run-f
 ```
 
+### Setting up ngrok
+
+ngrok needs to be active in order to communicate from your device to the backend server running on `localhost:8000`.
+> Note: ngrok needs to be restarted every 8 hours if using a free version.
+
+Start ngrok:
+
+```shell
+ngrok http 8000
+```
+
+Add ngrok to `ALLOWED_HOSTS` through the `.env` file (Don't include `http://`).
+
+```
+NGROK_HOST='<ngrok URL>'
+```
+
+Update `baseURL` in `frontend/src/api/api.service.js`.
+
+```
+export default axios.create({
+  baseURL: '<ngrok URL>',
+});
+```
+
 ### Linting
 
 **Backend:**
