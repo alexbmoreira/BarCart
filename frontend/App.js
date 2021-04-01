@@ -13,6 +13,8 @@ import Login from './src/pages/Login';
 import Register from './src/pages/Register';
 import BarCartTheme from './src/BarCartTheme';
 
+import { Provider as AuthProvider } from './src/contexts/AuthContext';
+
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -42,8 +44,10 @@ function AppNavigator() {
 
 export default function App() {
   return (
-    <PaperProvider theme={BarCartTheme.theme}>
-      <AppNavigator />
-    </PaperProvider>
+    <AuthProvider>
+      <PaperProvider theme={BarCartTheme.theme}>
+        <AppNavigator />
+      </PaperProvider>
+    </AuthProvider>
   );
 }
