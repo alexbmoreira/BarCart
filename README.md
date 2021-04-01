@@ -158,3 +158,15 @@ Add the following settings to `.vscode/settings.json`:
     ...
 }
 ```
+
+### Preventing commits to master
+
+In order to stop commits directly to master you'll have to add a pre-commit hook to your local git repository.
+
+To do this, simply run the following commands in order:
+
+```shell
+cp ./scripts/pre-commit.sh .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
+```
+> Note: the last line is not required on Windows
