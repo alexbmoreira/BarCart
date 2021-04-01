@@ -31,6 +31,7 @@ export default function Register({ navigation }) {
       <Button title="Register" onPress={registerUser}>
         <Text>Register</Text>
       </Button>
+      {state.errorMessage ? <Text>{state.errorMessage}</Text> : null}
       <Text>Already have an account?</Text>
       <Text onPress={() => navigation.navigate('Login')}>Log In</Text>
     </View>

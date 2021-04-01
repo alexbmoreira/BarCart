@@ -23,6 +23,7 @@ export default function Login({ navigation }) {
       <Button title="Login" onPress={loginUser}>
         <Text>Log In</Text>
       </Button>
+      {state.errorMessage ? <Text>{state.errorMessage}</Text> : null}
       <Text>Don't have an Account?</Text>
       <Text onPress={() => navigation.navigate('Register')}>Register</Text>
     </View>
