@@ -1,5 +1,7 @@
 import createDataContext from './createDataContext';
 
+import api from '../api/api.service.js';
+
 const authReducer = (state, action) => {
   switch (action.type) {
     default:
@@ -8,10 +10,13 @@ const authReducer = (state, action) => {
 };
 
 const register = (dispatch) => {
-  return ({ firstName, LastName, username, email, password, confirmPassword }) => {
-    // make an API request to sign up
-    // if we sign up: authenticate, change the state. signedIn = true
-    // if not: send back an error
+  return async ({ firstName, lastName, username, email, password, confirmPassword }) => {
+    try {
+      const response = await api.post('/rest-auth/register/', { firstName, lastName, username, email, password1: password, password2: confirmPassword });
+      console.log(response.data);
+    } catch (e) {
+      console.log(e.message);
+    }
   };
 };
 

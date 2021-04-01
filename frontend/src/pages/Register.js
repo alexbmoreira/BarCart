@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View } from 'react-native';
 import { Text, Button, TextInput } from 'react-native-paper';
 
+import { Context as AuthContext } from '../contexts/AuthContext';
+
 export default function Register({ navigation }) {
+  const { state, register } = useContext(AuthContext);
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  const registerUser = () => {
+    register({ firstName, lastName, username, email, password, confirmPassword });
+    navigation.navigate('Main');
+  };
 
   return (
     <View>
@@ -19,7 +28,7 @@ export default function Register({ navigation }) {
       <TextInput placeholder="Email Address" value={email} onChangeText={(newEmail) => setEmail(newEmail)} autoCapitalize="none" autoCorrect={false} />
       <TextInput placeholder="Password" value={password} onChangeText={(newPassword) => setPassword(newPassword)} autoCapitalize="none" autoCorrect={false} secureTextEntry />
       <TextInput placeholder="Confirm Password" value={confirmPassword} onChangeText={(newConfirmPassword) => setConfirmPassword(newConfirmPassword)} autoCapitalize="none" autoCorrect={false} secureTextEntry />
-      <Button title="Register" onPress={() => navigation.navigate('Main')}>
+      <Button title="Register" onPress={registerUser}>
         <Text>Register</Text>
       </Button>
       <Text>Already have an account?</Text>
