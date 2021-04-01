@@ -81,12 +81,10 @@ Add ngrok to `ALLOWED_HOSTS` through the `.env` file (Don't include `http://`).
 NGROK_HOST='<ngrok URL>'
 ```
 
-Update `baseURL` in `frontend/src/api/api.service.js`.
+Update `baseURL` via `frontend/.env`.
 
 ```
-export default axios.create({
-  baseURL: '<ngrok URL>',
-});
+NGROK_HOST=<ngrok URL>
 ```
 
 ### Linting
