@@ -113,7 +113,7 @@ make win-lint
 make test
 ```
 
-<!-- ## Contributing
+## Local Setup
 
 After setting the app up you'll have to configure some local settings:
 
@@ -151,4 +151,4 @@ Add the following settings to `.vscode/settings.json`:
 
     ...
 }
-``` -->
+```
