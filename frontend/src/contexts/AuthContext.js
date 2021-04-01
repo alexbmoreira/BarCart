@@ -21,17 +21,24 @@ const register = (dispatch) => {
 };
 
 const login = (dispatch) => {
-  return ({ username, password }) => {
-    // API request
-    // success: authenticate, change the state
-    // error: send back an error
+  return async ({ username, password }) => {
+    try {
+      const response = await api.post('/rest-auth/login/', { username, password });
+      console.log(response.data);
+    } catch (e) {
+      console.log(e.message);
+    }
   };
 };
 
 const logout = (dispatch) => {
-  return () => {
-    // API request
-    // success: sign out
+  return async () => {
+    try {
+      const response = await api.post('/rest-auth/logout/');
+      console.log(response.data);
+    } catch (e) {
+      console.log(e.message);
+    }
   };
 };
 
