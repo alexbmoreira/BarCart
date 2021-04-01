@@ -87,6 +87,14 @@ Update `baseURL` via `frontend/.env`.
 NGROK_HOST=<ngrok URL>
 ```
 
+After making these changes, you'll have to clear the cache the first time you run the frontend.
+
+```shell
+make run-f-clean
+```
+
+You can run normally after this until the ngrok URL expires again.
+
 ### Linting
 
 **Backend:**

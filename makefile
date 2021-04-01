@@ -13,6 +13,9 @@ run-b:
 run-f:
 	$(FRONTEND) npm run start
 
+run-f-clean:
+	$(FRONTEND) npm run start-clean
+
 migrate:
 	$(BACKEND) python manage.py makemigrations $(app) && python manage.py migrate $(app)
 
