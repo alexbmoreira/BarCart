@@ -1,10 +1,11 @@
 import React from 'react';
-import { Card, Text } from 'react-native-paper';
+import { Text } from 'react-native-paper';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Home() {
   return (
-    <Card>
+    <SafeAreaView>
       <Text>Create Drink</Text>
-    </Card>
+    </SafeAreaView>
   );
 }
