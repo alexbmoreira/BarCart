@@ -9,10 +9,12 @@ const authReducer = (state, action) => {
   switch (action.type) {
     case 'add_token':
       return { errorMessage: '', accessToken: action.payload };
-    case 'clear_error':
-      return { ...state, errorMessage: '' };
+    case 'clear_token':
+      return { errorMessage: '', accessToken: null };
     case 'add_error':
       return { ...state, errorMessage: action.payload };
+    case 'clear_error':
+      return { ...state, errorMessage: '' };
     default:
       return state;
   }
@@ -65,12 +67,14 @@ const login = (dispatch) => {
 const logout = (dispatch) => {
   return async () => {
     try {
-      const response = await api.post('/rest-auth/logout/');
-      console.log(response.data);
+      await api.post('/rest-auth/logout/');
+      await AsyncStorage.removeItem('access_token');
+      dispatch({ type: 'clear_token' });
+      navigate('Login');
     } catch (e) {
       console.log(e.message);
     }
   };
 };
 
-export const { Provider, Context } = createDataContext(authReducer, { clearError, register, login, logout, tryLocalLogin }, { accessToken: null, errorMessage: '' });
+export const { Provider, Context } = createDataContext(authReducer, { clearError, tryLocalLogin, register, login, logout }, { accessToken: null, errorMessage: '' });
