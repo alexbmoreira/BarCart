@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Provider as PaperProvider } from 'react-native-paper';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import Home from './src/pages/Home';
 import OnTap from './src/pages/OnTap';
@@ -26,10 +27,10 @@ function MainTabs() {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="OnTap" component={OnTap} />
-      <Tab.Screen name="CreateDrink" component={CreateDrink} />
-      <Tab.Screen name="Profile" component={Profile} />
       <Tab.Screen name="Search" component={Search} />
+      <Tab.Screen name="CreateDrink" component={CreateDrink} />
+      <Tab.Screen name="OnTap" component={OnTap} />
+      <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );
 }
@@ -49,10 +50,12 @@ function AppNavigator() {
 
 export default function App() {
   return (
-    <AuthProvider>
-      <PaperProvider theme={BarCartTheme.theme}>
-        <AppNavigator />
-      </PaperProvider>
-    </AuthProvider>
+    <SafeAreaProvider>
+      <AuthProvider>
+        <PaperProvider theme={BarCartTheme.theme}>
+          <AppNavigator />
+        </PaperProvider>
+      </AuthProvider>
+    </SafeAreaProvider>
   );
 }

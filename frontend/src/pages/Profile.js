@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { Card, Text, Button } from 'react-native-paper';
+import { Text, Button } from 'react-native-paper';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Context as AuthContext } from '../contexts/AuthContext';
 
@@ -11,9 +12,9 @@ export default function Profile() {
   };
 
   return (
-    <Card>
+    <SafeAreaView>
       <Text>Profile</Text>
       <Button onPress={logoutUser}>Log out</Button>
-    </Card>
+    </SafeAreaView>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Text, Button, TextInput } from 'react-native-paper';
 
 import { Context as AuthContext } from '../contexts/AuthContext';
@@ -26,7 +26,7 @@ export default function Register({ navigation }) {
   }, [navigation, clearError]);
 
   return (
-    <View>
+    <SafeAreaView>
       <Text>Register</Text>
       <TextInput placeholder="First Name" value={firstName} onChangeText={(newFirstName) => setFirstName(newFirstName)} />
       <TextInput placeholder="Last Name" value={lastName} onChangeText={(newLastName) => setLastName(newLastName)} />
@@ -40,6 +40,6 @@ export default function Register({ navigation }) {
       {state.errorMessage ? <Text>{state.errorMessage}</Text> : null}
       <Text>Already have an account?</Text>
       <Text onPress={() => navigation.navigate('Login')}>Log In</Text>
-    </View>
+    </SafeAreaView>
   );
 }
