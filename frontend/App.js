@@ -15,6 +15,8 @@ import BarCartTheme from './src/BarCartTheme';
 
 import { Provider as AuthProvider } from './src/contexts/AuthContext';
 
+import { navigationRef } from './src/RootNavigation';
+
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -32,7 +34,7 @@ function MainTabs() {
 
 function AppNavigator() {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />

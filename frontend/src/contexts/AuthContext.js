@@ -1,6 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import createDataContext from './createDataContext';
 
+import { navigate } from '../RootNavigation';
+
 import api from '../api/api.service.js';
 
 const authReducer = (state, action) => {
@@ -28,6 +30,7 @@ const register = (dispatch) => {
       const response = await api.post('/rest-auth/register/', { firstName, lastName, username, email, password1: password, password2: confirmPassword });
       await AsyncStorage.setItem('access_token', response.data.key);
       dispatch({ type: 'add_token', payload: response.data.key });
+      navigate('Main');
     } catch (e) {
       dispatch({ type: 'add_error', payload: 'Oops! Something went wrong while signing up!' });
     }
@@ -40,6 +43,7 @@ const login = (dispatch) => {
       const response = await api.post('/rest-auth/login/', { username, password });
       await AsyncStorage.setItem('access_token', response.data.key);
       dispatch({ type: 'add_token', payload: response.data.key });
+      navigate('Main');
     } catch (e) {
       dispatch({ type: 'add_error', payload: 'Oops! Something went wrong while logging in!' });
     }

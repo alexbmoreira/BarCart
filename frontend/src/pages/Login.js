@@ -12,7 +12,6 @@ export default function Login({ navigation }) {
 
   const loginUser = () => {
     login({ username, password });
-    navigation.navigate('Main');
   };
 
   useEffect(() => {
