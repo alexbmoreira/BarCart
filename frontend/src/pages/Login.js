@@ -5,7 +5,7 @@ import { Text, Button, TextInput } from 'react-native-paper';
 import { Context as AuthContext } from '../contexts/AuthContext';
 
 export default function Login({ navigation }) {
-  const { state, login, clearError, tryLocalLogin } = useContext(AuthContext);
+  const { state, login, clearError } = useContext(AuthContext);
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -13,10 +13,6 @@ export default function Login({ navigation }) {
   const loginUser = () => {
     login({ username, password });
   };
-
-  useEffect(() => {
-    tryLocalLogin();
-  }, [tryLocalLogin]);
 
   useEffect(() => {
     navigation.addListener('focus', (e) => {

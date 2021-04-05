@@ -11,6 +11,8 @@ import Profile from './src/pages/Profile';
 import Search from './src/pages/Search';
 import Login from './src/pages/Login';
 import Register from './src/pages/Register';
+import ResolveAuth from './src/pages/ResolveAuth';
+
 import BarCartTheme from './src/BarCartTheme';
 
 import { Provider as AuthProvider } from './src/contexts/AuthContext';
@@ -36,6 +38,7 @@ function AppNavigator() {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="ResolveAuth" component={ResolveAuth} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Main" component={MainTabs} />

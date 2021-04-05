@@ -30,6 +30,8 @@ const tryLocalLogin = (dispatch) => {
     if (token) {
       dispatch({ type: 'add_token', payload: token });
       navigate('Main');
+    } else {
+      navigate('Login');
     }
   };
 };
