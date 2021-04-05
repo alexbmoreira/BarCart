@@ -24,6 +24,16 @@ const clearError = (dispatch) => {
   };
 };
 
+const tryLocalLogin = (dispatch) => {
+  return async () => {
+    const token = await AsyncStorage.getItem('access_token');
+    if (token) {
+      dispatch({ type: 'add_token', payload: token });
+      navigate('Main');
+    }
+  };
+};
+
 const register = (dispatch) => {
   return async ({ firstName, lastName, username, email, password, confirmPassword }) => {
     try {
@@ -61,4 +71,4 @@ const logout = (dispatch) => {
   };
 };
 
-export const { Provider, Context } = createDataContext(authReducer, { clearError, register, login, logout }, { accessToken: null, errorMessage: '' });
+export const { Provider, Context } = createDataContext(authReducer, { clearError, register, login, logout, tryLocalLogin }, { accessToken: null, errorMessage: '' });
