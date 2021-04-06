@@ -8,10 +8,9 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   async (config) => {
-    console.log(`${NGROK_HOST}`);
     const token = await AsyncStorage.getItem('access_token');
     if (token) {
-      config.headers.Authorization = `Authorization ${token}`;
+      config.headers.Authorization = `Token ${token}`;
     }
     return config;
   },
