@@ -45,7 +45,7 @@ class DrinkPopularView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
-        drinks = Drink.objects.by_popularity()
+        drinks = Drink.objects.by_popularity()[:6]
         serializer = DrinkSerializer(drinks, many=True)
         return Response(serializer.data)
 
