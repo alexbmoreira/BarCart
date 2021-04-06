@@ -17,6 +17,7 @@ import ResolveAuth from './src/pages/ResolveAuth';
 import BarCartTheme from './src/BarCartTheme';
 
 import { Provider as AuthProvider } from './src/contexts/AuthContext';
+import { Provider as DrinksProvider } from './src/contexts/DrinkContext';
 
 import { navigationRef } from './src/RootNavigation';
 
@@ -52,9 +53,11 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <AuthProvider>
-        <PaperProvider theme={BarCartTheme.theme}>
-          <AppNavigator />
-        </PaperProvider>
+        <DrinksProvider>
+          <PaperProvider theme={BarCartTheme.theme}>
+            <AppNavigator />
+          </PaperProvider>
+        </DrinksProvider>
       </AuthProvider>
     </SafeAreaProvider>
   );
