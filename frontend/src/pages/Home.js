@@ -4,25 +4,22 @@ import { Text } from 'react-native-paper';
 
 import { Context as DrinkContext } from '../contexts/DrinkContext';
 
-export default function Home() {
+export default function Home({ navigation }) {
   const { state, getUserDrinks } = useContext(DrinkContext);
 
   const [userDrinks, setUserDrinks] = useState([]);
 
   useEffect(() => {
-    async function ud() {
+    const ud = navigation.addListener('focus', async () => {
       await getUserDrinks();
-      setUserDrinks(state);
-      console.log(userDrinks);
-    }
+      setUserDrinks(state !== {} ? state : []);
+    });
 
-    ud();
-  }, []);
-
-  console.log(userDrinks);
+    return ud;
+  }, [navigation, getUserDrinks, state]);
 
   const userDrinksArray = userDrinks.map((drink, i) => {
-    return <Text>{userDrinks[i].name}</Text>;
+    return <Text key={userDrinks[i].id}>{userDrinks[i].name}</Text>;
   });
 
   return (
