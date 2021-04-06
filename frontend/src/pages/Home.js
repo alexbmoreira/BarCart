@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Text } from 'react-native-paper';
 
+import DrinkTile from '../components/common/DrinkTile';
+
 import { Context as DrinkContext } from '../contexts/DrinkContext';
 
 export default function Home({ navigation }) {
@@ -18,11 +20,11 @@ export default function Home({ navigation }) {
   }, [navigation, getUserDrinks, getUserOnTap, state]);
 
   const userDrinksArray = state.userDrinks.map((drink, i) => {
-    return <Text key={state.userDrinks[i].id}>{state.userDrinks[i].name}</Text>;
+    return <DrinkTile key={state.userDrinks[i].id} drink={state.userDrinks[i]} />;
   });
 
   const userOnTapArray = state.userOnTap.map((drink, i) => {
-    return <Text key={state.userOnTap[i].id}>{state.userOnTap[i].name}</Text>;
+    return <DrinkTile key={state.userOnTap[i].id} drink={state.userOnTap[i]} />;
   });
 
   return (
