@@ -1,6 +1,9 @@
 import React, { useContext, useEffect } from 'react';
+import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Text } from 'react-native-paper';
+import { Text, Title } from 'react-native-paper';
+
+import Spacer from '../components/theme/Spacer';
 
 import DrinkTile from '../components/common/DrinkTile';
 
@@ -29,9 +32,20 @@ export default function Home({ navigation }) {
 
   return (
     <SafeAreaView>
-      <Text>Home</Text>
-      {userDrinksArray}
-      {userOnTapArray}
+      <ScrollView>
+        <Spacer>
+          <Text>BarCart is a mobileapp designed to get the right drink in your hands</Text>
+          <Text>Check out the “On Tap “ section for drinks that you can make right now</Text>
+        </Spacer>
+        <Spacer x>
+          <Title>Your Drinks</Title>
+        </Spacer>
+        {userDrinksArray}
+        <Spacer x>
+          <Title>On Tap</Title>
+        </Spacer>
+        {userOnTapArray}
+      </ScrollView>
     </SafeAreaView>
   );
 }
