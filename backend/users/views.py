@@ -1,5 +1,5 @@
-from core.serializers import DrinkSerializer, IngredientSerializer
 from core.models import Drink
+from core.serializers import DrinkSerializer, IngredientSerializer
 from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
@@ -8,7 +8,16 @@ from rest_framework.views import APIView
 
 from .models import DrinkLike, OnHandIngredient, Profile
 from .serializers import (DrinkLikeSerializer, OnHandIngredientSerializer,
-                          ProfileSerializer)
+                          ProfileSerializer, UserSerializer)
+
+
+class GetUserView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        user = request.user
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
 
 
 class ProfileDetailView(APIView):
