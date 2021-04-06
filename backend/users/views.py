@@ -8,23 +8,17 @@ from rest_framework.views import APIView
 
 from .models import DrinkLike, OnHandIngredient, Profile
 from .serializers import (DrinkLikeSerializer, OnHandIngredientSerializer,
-                          ProfileSerializer, UserSerializer)
-
-
-class GetUserView(APIView):
-    permission_classes = (IsAuthenticated,)
-
-    def get(self, request):
-        user = request.user
-        serializer = UserSerializer(user)
-        return Response(serializer.data)
+                          ProfileSerializer)
 
 
 class ProfileDetailView(APIView):
     permission_classes = (IsAuthenticated,)
 
-    def get(self, request, user_id):
-        profile = get_object_or_404(Profile, user__id=user_id)
+    def get(self, request, user_id=-1):
+        if user_id == -1:
+            profile = request.user.profile
+        else:
+            profile = get_object_or_404(Profile, user__id=user_id)
         serializer = ProfileSerializer(profile)
         return Response(serializer.data)
 
