@@ -22,6 +22,9 @@ class DrinkLike(models.Model):
     class Meta:
         unique_together = ['user', 'drink']
 
+    def __str__(self):
+        return f'{self.user} likes {self.drink}'
+
 
 class OnHandIngredient(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
