@@ -39,8 +39,13 @@ def save_drink_like(sender, instance, **kwargs):
     instance.drink.popularity += 0.1
     instance.drink.save()
 
+    if instance.drink in Profile.objects.get_on_tap(instance.user.profile):
+        OnTapDrink.objects.create(user=instance.user, drink=instance.drink)
+
 
 @receiver(post_delete, sender=DrinkLike)
 def delete_drink_like(sender, instance, **kwargs):
     instance.drink.popularity -= 0.1
     instance.drink.save()
+
+    instance.user.ontapdrink_set.all().filter(drink=instance.drink).first().delete()
