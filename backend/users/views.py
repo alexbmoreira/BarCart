@@ -1,3 +1,5 @@
+from core.serializers import DrinkSerializer
+from core.models import Drink
 from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
@@ -55,4 +57,29 @@ class DrinkLikeView(APIView):
     def delete(self, request):
         unlike = get_object_or_404(DrinkLike, drink__id=request.data['drink'], user=request.user)
         unlike.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class UserDrinksView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        drinks = request.user.drink_set.all()
+        serializer = DrinkSerializer(drinks, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        drink = request.data
+        drink['creator'] = request.user.id
+        serializer = DrinkSerializer(data=drink)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_201_CREATED)
+
+        return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request):
+        drink = get_object_or_404(Drink, id=request.data['id'], creator=request.user)
+        drink.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
