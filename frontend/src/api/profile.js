@@ -16,9 +16,14 @@ async function getUserLikes() {
   return api.get('/users/likes/').then((response) => response.data);
 }
 
+async function getPopularDrinks() {
+  return api.get('/drinks/popular/').then((response) => response.data);
+}
+
 export default {
   getUser,
   getUserDrinks,
   getUserOnTap,
   getUserLikes,
+  getPopularDrinks,
 };

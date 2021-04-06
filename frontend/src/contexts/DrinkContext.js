@@ -10,6 +10,8 @@ const drinksReducer = (state, action) => {
       return { ...state, userOnTap: action.payload };
     case 'get_user_likes':
       return { ...state, userLikes: action.payload };
+    case 'get_popular_drinks':
+      return { ...state, popularDrinks: action.payload };
     default:
       return state;
   }
@@ -36,4 +38,11 @@ const getUserLikes = (dispatch) => {
   };
 };
 
-export const { Provider, Context } = createDataContext(drinksReducer, { getUserDrinks, getUserOnTap, getUserLikes }, { userDrinks: [], userOnTap: [], userLikes: [] });
+const getPopularDrinks = (dispatch) => {
+  return async () => {
+    const popularDrinks = await profileAPI.getPopularDrinks();
+    dispatch({ type: 'get_popular_drinks', payload: popularDrinks });
+  };
+};
+
+export const { Provider, Context } = createDataContext(drinksReducer, { getUserDrinks, getUserOnTap, getUserLikes, getPopularDrinks }, { userDrinks: [], userOnTap: [], userLikes: [], popularDrinks: [] });

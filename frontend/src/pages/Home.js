@@ -10,17 +10,22 @@ import DrinkTile from '../components/common/DrinkTile';
 import { Context as DrinkContext } from '../contexts/DrinkContext';
 
 export default function Home({ navigation }) {
-  const { state, getUserDrinks, getUserOnTap, getUserLikes } = useContext(DrinkContext);
+  const { state, getPopularDrinks, getUserDrinks, getUserOnTap, getUserLikes } = useContext(DrinkContext);
 
   useEffect(() => {
     const ud = navigation.addListener('focus', async () => {
+      await getPopularDrinks();
       await getUserDrinks();
       await getUserOnTap();
       await getUserLikes();
     });
 
     return ud;
-  }, [navigation, getUserDrinks, getUserOnTap, getUserLikes, state]);
+  }, [navigation, getPopularDrinks, getUserDrinks, getUserOnTap, getUserLikes, state]);
+
+  const popularDrinksArray = state.popularDrinks.map((drink, i) => {
+    return <DrinkTile key={state.popularDrinks[i].id} drink={state.popularDrinks[i]} />;
+  });
 
   const userDrinksArray = state.userDrinks.map((drink, i) => {
     return <DrinkTile key={state.userDrinks[i].id} drink={state.userDrinks[i]} />;
@@ -41,6 +46,10 @@ export default function Home({ navigation }) {
           <Text>BarCart is a mobileapp designed to get the right drink in your hands</Text>
           <Text>Check out the "On Tap" section for drinks that you can make right now</Text>
         </Spacer>
+        <Spacer x>
+          <Title>Popular</Title>
+        </Spacer>
+        <ScrollView horizontal>{popularDrinksArray}</ScrollView>
         <Spacer x>
           <Title>Your Drinks</Title>
         </Spacer>
