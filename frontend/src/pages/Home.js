@@ -40,11 +40,11 @@ export default function Home({ navigation }) {
         <Spacer x>
           <Title>Your Drinks</Title>
         </Spacer>
-        {userDrinksArray}
+        <ScrollView horizontal>{userDrinksArray}</ScrollView>
         <Spacer x>
           <Title>On Tap</Title>
         </Spacer>
-        {userOnTapArray}
+        <ScrollView horizontal>{userOnTapArray}</ScrollView>
       </ScrollView>
     </SafeAreaView>
   );
