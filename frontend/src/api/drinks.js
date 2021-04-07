@@ -22,8 +22,7 @@ async function getPopularDrinks() {
 
 async function createDrink(drinkData) {
   drinkData = {
-    name: 'Screwdrivah',
-    instructions: 'Build over ice in a tall glass and add your garnish. Works best with fresh squeezed orange juice.',
+    ...drinkData,
     ingredients: [
       {
         ingredient: 115,
