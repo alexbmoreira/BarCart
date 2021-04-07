@@ -6,6 +6,8 @@ import drinksAPI from '../api/drinks';
 
 const drinksReducer = (state, action) => {
   switch (action.type) {
+    case 'get_ingredients':
+      return { ...state, ingredientsList: action.payload };
     default:
       return state;
   }
@@ -18,4 +20,11 @@ const createDrink = (dispatch) => {
   };
 };
 
-export const { Provider, Context } = createDataContext(drinksReducer, { createDrink }, {});
+const getIngredients = (dispatch) => {
+  return async () => {
+    const ingredients = await drinksAPI.getIngredients();
+    dispatch({ type: 'get_ingredients', payload: ingredients });
+  };
+};
+
+export const { Provider, Context } = createDataContext(drinksReducer, { createDrink, getIngredients }, { ingredientsList: [] });

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Button, TextInput } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import RNPickerSelect from 'react-native-picker-select';
@@ -7,8 +7,8 @@ import Spacer from '../components/theme/Spacer';
 
 import { Context as DrinkCreateContext } from '../contexts/DrinkCreateContext';
 
-export default function Home() {
-  const { createDrink } = useContext(DrinkCreateContext);
+export default function CreateDrink({ navigation }) {
+  const { state, createDrink, getIngredients } = useContext(DrinkCreateContext);
 
   const [drinkName, setDrinkName] = useState('');
   const [instructions, setInstructions] = useState('');
@@ -17,27 +17,18 @@ export default function Home() {
   const [units, setUnits] = useState('');
   // const [ingredients, setIngredients] = useState([]);
 
+  useEffect(() => {
+    const ud = navigation.addListener('focus', async () => {
+      await getIngredients();
+    });
+
+    return ud;
+  }, [navigation, getIngredients, state]);
+
   const submitCreateDrink = () => {
     const ingredients = [{ name: ingredient.name, ingredient: ingredient.ingredient, quantity, units }];
     createDrink({ name: drinkName, instructions, ingredients });
   };
-
-  const ingredientsArray = [
-    {
-      id: 203,
-      name: 'mint',
-    },
-    {
-      id: 219,
-      name: 'brown sugar',
-    },
-    {
-      id: 220,
-      name: 'orange juice',
-    },
-  ].map((ing, i) => {
-    return { label: ing.name, value: ing.id };
-  });
 
   const pickerUnits = [
     {
@@ -54,6 +45,16 @@ export default function Home() {
     },
   ];
 
+  const ingredientsArray = state.ingredientsList.map((ing, i) => {
+    return { label: ing.name, value: ing.id };
+  });
+
+  const ingredientValueChange = (id, i) => {
+    if (id) {
+      setIngredient({ ingredient: id, name: ingredientsArray[i - 1].label });
+    }
+  };
+
   return (
     <SafeAreaView>
       <Spacer>
@@ -61,7 +62,7 @@ export default function Home() {
         <Spacer />
         <TextInput placeholder="Instructions" value={instructions} onChangeText={(newInstructions) => setInstructions(newInstructions)} multiline numberOfLines={5} />
         <Spacer />
-        <RNPickerSelect placeholder={{ label: 'Select an ingredient...' }} onValueChange={(id, i) => setIngredient({ ingredient: id, name: ingredientsArray[i - 1].label })} items={ingredientsArray} />
+        <RNPickerSelect placeholder={{ label: 'Select an ingredient...' }} onValueChange={ingredientValueChange} items={ingredientsArray} />
         <TextInput keyboardType="decimal-pad" onChangeText={(newQuantity) => setQuantity(newQuantity)} />
         <RNPickerSelect placeholder={{ label: 'Select a measurement unit...' }} onValueChange={(newUnits) => setUnits(newUnits)} items={pickerUnits} />
         <Spacer />

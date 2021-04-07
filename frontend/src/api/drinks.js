@@ -24,6 +24,10 @@ async function createDrink(drinkData) {
   return api.post('/users/drinks/', drinkData).then(() => {});
 }
 
+async function getIngredients() {
+  return api.get('/ingredients/').then((response) => response.data);
+}
+
 export default {
   getUser,
   getUserDrinks,
@@ -31,4 +35,5 @@ export default {
   getUserLikes,
   getPopularDrinks,
   createDrink,
+  getIngredients,
 };
