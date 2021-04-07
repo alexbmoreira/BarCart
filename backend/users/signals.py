@@ -46,4 +46,6 @@ def delete_drink_like(sender, instance, **kwargs):
     instance.drink.popularity -= 0.1
     instance.drink.save()
 
-    instance.user.ontapdrink_set.all().filter(drink=instance.drink).first().delete()
+    on_tap_drink = instance.user.ontapdrink_set.all().filter(drink=instance.drink).first()
+    if on_tap_drink:
+        on_tap_drink.delete()
