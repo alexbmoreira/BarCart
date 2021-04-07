@@ -16,7 +16,7 @@ class IngredientListView(APIView):
             ingredients = Ingredient.objects.filter(name__icontains=search)
         else:
             ingredients = Ingredient.objects.all()
-        serializer = IngredientSerializer(ingredients, many=True)
+        serializer = IngredientSerializer(ingredients.order_by('name'), many=True)
         return Response(serializer.data)
 
 
