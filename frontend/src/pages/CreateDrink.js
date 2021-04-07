@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Text, Button, TextInput } from 'react-native-paper';
+import { Text, Button, TextInput, Title } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { withTheme } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
@@ -8,6 +8,7 @@ import Spacer from '../components/theme/Spacer';
 import IngredientPicker from '../components/createDrink/IngredientPicker';
 
 import { Context as DrinkCreateContext } from '../contexts/DrinkCreateContext';
+import { ScrollView } from 'react-native-gesture-handler';
 
 function CreateDrink({ navigation, theme }) {
   const { colors } = theme;
@@ -74,17 +75,22 @@ function CreateDrink({ navigation, theme }) {
 
   return (
     <SafeAreaView>
-      <Spacer>
-        <TextInput placeholder="Drink Name" value={drinkName} onChangeText={(newDrinkName) => setDrinkName(newDrinkName)} autoCorrect={false} />
-        <Spacer />
-        <TextInput placeholder="Instructions" value={instructions} onChangeText={(newInstructions) => setInstructions(newInstructions)} multiline numberOfLines={5} />
-        {ingredients.length > 0 ? <Spacer /> : null}
-        {addedIngredients}
-        <Spacer />
-        <IngredientPicker addIngredient={addIngredient} ingredientsArray={ingredientsArray} pickerUnits={pickerUnits} />
-        <Spacer />
-        <Button onPress={submitCreateDrink}>Create Drink</Button>
-      </Spacer>
+      <ScrollView>
+        <Spacer>
+          <Title>Name:</Title>
+          <TextInput placeholder="Drink Name" value={drinkName} onChangeText={(newDrinkName) => setDrinkName(newDrinkName)} autoCorrect={false} />
+          <Spacer />
+          <Title>Instructions:</Title>
+          <TextInput placeholder="Instructions" value={instructions} onChangeText={(newInstructions) => setInstructions(newInstructions)} multiline numberOfLines={5} />
+          <Spacer />
+          <Title>Ingredients:</Title>
+          {ingredients.length > 0 ? addedIngredients : <Text>None</Text>}
+          <Spacer />
+          <IngredientPicker addIngredient={addIngredient} ingredientsArray={ingredientsArray} pickerUnits={pickerUnits} />
+          <Spacer />
+          <Button onPress={submitCreateDrink}>Create Drink</Button>
+        </Spacer>
+      </ScrollView>
     </SafeAreaView>
   );
 }
