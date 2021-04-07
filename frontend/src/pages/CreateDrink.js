@@ -59,7 +59,7 @@ function CreateDrink({ navigation, theme }) {
   });
 
   const addIngredient = ({ ingredient, quantity, units }) => {
-    if (ingredient && quantity && units) {
+    if (ingredient && quantity && units && !ingredients.find((ing) => ing.ingredient === ingredient.ingredient)) {
       setIngredients([...ingredients, { name: ingredient.name, ingredient: ingredient.ingredient, quantity, units }]);
     }
   };
