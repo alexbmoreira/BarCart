@@ -2,12 +2,15 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Button, TextInput } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import RNPickerSelect from 'react-native-picker-select';
+import { withTheme } from 'react-native-paper';
+import { FontAwesome } from '@expo/vector-icons';
 
 import Spacer from '../components/theme/Spacer';
 
 import { Context as DrinkCreateContext } from '../contexts/DrinkCreateContext';
 
-export default function CreateDrink({ navigation }) {
+function CreateDrink({ navigation, theme }) {
+  const { colors } = theme;
   const { state, createDrink, getIngredients } = useContext(DrinkCreateContext);
 
   const [drinkName, setDrinkName] = useState('');
@@ -16,6 +19,13 @@ export default function CreateDrink({ navigation }) {
   const [quantity, setQuantity] = useState(0);
   const [units, setUnits] = useState('');
   // const [ingredients, setIngredients] = useState([]);
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      title: 'Create Drink',
+      tabBarIcon: () => <FontAwesome name="plus-square" size={32} color={colors.surface} />,
+    });
+  }, [navigation, colors.surface]);
 
   useEffect(() => {
     const ud = navigation.addListener('focus', async () => {
@@ -71,3 +81,5 @@ export default function CreateDrink({ navigation }) {
     </SafeAreaView>
   );
 }
+
+export default withTheme(CreateDrink);
