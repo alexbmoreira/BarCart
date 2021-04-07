@@ -58,20 +58,24 @@ function CreateDrink({ navigation, theme }) {
     return { label: ing.name, value: ing.id };
   });
 
-  const addedIngredients = ingredients.map((ing, i) => {
-    return (
-      <View key={ing.ingredient}>
-        <DrinkIngredient ingredient={ing} />
-        {i < ingredients.length - 1 ? <Spacer amount={5} /> : null}
-      </View>
-    );
-  });
-
   const addIngredient = ({ ingredient, quantity, units }) => {
     if (ingredient && quantity && units) {
       setIngredients([...ingredients, { name: ingredient.name, ingredient: ingredient.ingredient, quantity, units }]);
     }
   };
+
+  const removeIngredient = (id) => {
+    setIngredients(ingredients.filter((ing) => ing.ingredient !== id));
+  };
+
+  const addedIngredients = ingredients.map((ing, i) => {
+    return (
+      <View key={ing.ingredient}>
+        <DrinkIngredient removeIngredient={removeIngredient} ingredient={ing} />
+        {i < ingredients.length - 1 ? <Spacer amount={5} /> : null}
+      </View>
+    );
+  });
 
   return (
     <SafeAreaView>

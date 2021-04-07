@@ -6,7 +6,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import Spacer from '../theme/Spacer';
 import Flex from '../theme/Flex';
 
-function DrinkIngredient({ ingredient, theme }) {
+function DrinkIngredient({ removeIngredient, ingredient, theme }) {
   const { colors } = theme;
   return (
     <Card>
@@ -16,7 +16,7 @@ function DrinkIngredient({ ingredient, theme }) {
             {ingredient.quantity} {ingredient.units} of {ingredient.name}
           </Text>
         </Spacer>
-        <Button>
+        <Button onPress={removeIngredient.bind(this, ingredient.ingredient)}>
           <FontAwesome name="trash" size={32} color="white" />
         </Button>
       </Flex>
