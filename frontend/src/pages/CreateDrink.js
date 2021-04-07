@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Button, TextInput } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import RNPickerSelect from 'react-native-picker-select';
 import { withTheme } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 
 import Spacer from '../components/theme/Spacer';
+import IngredientPicker from '../components/createDrink/IngredientPicker';
 
 import { Context as DrinkCreateContext } from '../contexts/DrinkCreateContext';
 
@@ -65,6 +65,10 @@ function CreateDrink({ navigation, theme }) {
     }
   };
 
+  const quantityValueChange = (newQuantity) => setQuantity(newQuantity);
+
+  const unitValueChange = (newUnits) => setUnits(newUnits);
+
   return (
     <SafeAreaView>
       <Spacer>
@@ -72,9 +76,7 @@ function CreateDrink({ navigation, theme }) {
         <Spacer />
         <TextInput placeholder="Instructions" value={instructions} onChangeText={(newInstructions) => setInstructions(newInstructions)} multiline numberOfLines={5} />
         <Spacer />
-        <RNPickerSelect placeholder={{ label: 'Select an ingredient...' }} onValueChange={ingredientValueChange} items={ingredientsArray} />
-        <TextInput keyboardType="decimal-pad" onChangeText={(newQuantity) => setQuantity(newQuantity)} />
-        <RNPickerSelect placeholder={{ label: 'Select a measurement unit...' }} onValueChange={(newUnits) => setUnits(newUnits)} items={pickerUnits} />
+        <IngredientPicker ingredientValueChange={ingredientValueChange} quantityValueChange={quantityValueChange} unitValueChange={unitValueChange} ingredientsArray={ingredientsArray} pickerUnits={pickerUnits} />
         <Spacer />
         <Button onPress={submitCreateDrink}>Create Drink</Button>
       </Spacer>
