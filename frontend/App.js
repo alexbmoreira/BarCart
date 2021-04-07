@@ -26,7 +26,7 @@ const Stack = createStackNavigator();
 
 function MainTabs() {
   return (
-    <Tab.Navigator tabBarOptions={{ showIcon: true }}>
+    <Tab.Navigator>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Search" component={Search} />
       <Tab.Screen name="CreateDrink" component={CreateDrink} />
