@@ -1,10 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { View } from 'react-native';
 import { Text, Button, TextInput, Title } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { withTheme } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 
 import Spacer from '../components/theme/Spacer';
+import DrinkIngredient from '../components/createDrink/DrinkIngredient';
 import IngredientPicker from '../components/createDrink/IngredientPicker';
 
 import { Context as DrinkCreateContext } from '../contexts/DrinkCreateContext';
@@ -16,9 +18,6 @@ function CreateDrink({ navigation, theme }) {
 
   const [drinkName, setDrinkName] = useState('');
   const [instructions, setInstructions] = useState('');
-  // const [ingredient, setIngredient] = useState({});
-  // const [quantity, setQuantity] = useState(0);
-  // const [units, setUnits] = useState('');
   const [ingredients, setIngredients] = useState([]);
 
   React.useLayoutEffect(() => {
@@ -61,9 +60,10 @@ function CreateDrink({ navigation, theme }) {
 
   const addedIngredients = ingredients.map((ing, i) => {
     return (
-      <Text key={i}>
-        {ing.quantity} {ing.units} of {ing.name}
-      </Text>
+      <View key={ing.ingredient}>
+        <DrinkIngredient ingredient={ing} />
+        {i < ingredients.length - 1 ? <Spacer /> : null}
+      </View>
     );
   });
 

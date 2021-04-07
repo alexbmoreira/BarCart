@@ -13,14 +13,8 @@ const Spacer = ({ children, row, col }) => {
 };
 
 const styles = StyleSheet.create({
-  flexRow: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  flexCol: {
-    flex: 1,
-    flexDirection: 'column',
-  },
+  flexRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  flexCol: { flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between' },
 });
 
 export default Spacer;
