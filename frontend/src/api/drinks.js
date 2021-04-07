@@ -21,27 +21,7 @@ async function getPopularDrinks() {
 }
 
 async function createDrink(drinkData) {
-  drinkData = {
-    ...drinkData,
-    ingredients: [
-      {
-        ingredient: 115,
-        name: 'vodka',
-        units: 'oz',
-        quantity: 1.5,
-      },
-      {
-        ingredient: 116,
-        name: 'orange juice',
-        units: 'oz',
-        quantity: 4.5,
-      },
-    ],
-  };
-  return api
-    .post('/users/drinks/', drinkData)
-    .then(() => {})
-    .catch((e) => console.log(e.response.data));
+  return api.post('/users/drinks/', drinkData).then(() => {});
 }
 
 export default {
