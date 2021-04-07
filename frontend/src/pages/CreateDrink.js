@@ -59,11 +59,17 @@ function CreateDrink({ navigation, theme }) {
   });
 
   const addedIngredients = ingredients.map((ing, i) => {
-    return <Text key={i}>{ing.name}</Text>;
+    return (
+      <Text key={i}>
+        {ing.quantity} {ing.units} of {ing.name}
+      </Text>
+    );
   });
 
   const addIngredient = ({ ingredient, quantity, units }) => {
-    setIngredients([...ingredients, { name: ingredient.name, ingredient: ingredient.ingredient, quantity, units }]);
+    if (ingredient && quantity && units) {
+      setIngredients([...ingredients, { name: ingredient.name, ingredient: ingredient.ingredient, quantity, units }]);
+    }
   };
 
   return (
@@ -72,7 +78,7 @@ function CreateDrink({ navigation, theme }) {
         <TextInput placeholder="Drink Name" value={drinkName} onChangeText={(newDrinkName) => setDrinkName(newDrinkName)} autoCorrect={false} />
         <Spacer />
         <TextInput placeholder="Instructions" value={instructions} onChangeText={(newInstructions) => setInstructions(newInstructions)} multiline numberOfLines={5} />
-        <Spacer />
+        {ingredients.length > 0 ? <Spacer /> : null}
         {addedIngredients}
         <Spacer />
         <IngredientPicker addIngredient={addIngredient} ingredientsArray={ingredientsArray} pickerUnits={pickerUnits} />
