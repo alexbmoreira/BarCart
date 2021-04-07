@@ -62,7 +62,7 @@ function CreateDrink({ navigation, theme }) {
     return (
       <View key={ing.ingredient}>
         <DrinkIngredient ingredient={ing} />
-        {i < ingredients.length - 1 ? <Spacer /> : null}
+        {i < ingredients.length - 1 ? <Spacer amount={5} /> : null}
       </View>
     );
   });
