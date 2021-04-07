@@ -1,33 +1,36 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-const Spacer = ({ children, x, y }) => {
-  let style = styles.spacer;
+const Spacer = ({ children, x, y, amount }) => {
+  amount = amount || 15;
+  let style = styles(amount).spacer;
   if (x) {
-    style = styles.spacerX;
+    style = styles(amount).spacerX;
   }
   if (y) {
-    style = styles.spacerY;
+    style = styles(amount).spacerY;
   }
   return <View style={style}>{children}</View>;
 };
 
-const styles = StyleSheet.create({
-  spacer: {
-    margin: 15,
-  },
-  spacerX: {
-    marginTop: 0,
-    marginBottom: 0,
-    marginLeft: 15,
-    marginRight: 15,
-  },
-  spacerY: {
-    marginTop: 15,
-    marginBottom: 15,
-    marginLeft: 0,
-    marginRight: 0,
-  },
+const styles = StyleSheet.create((amount) => {
+  return {
+    spacer: {
+      margin: amount,
+    },
+    spacerX: {
+      marginTop: 0,
+      marginBottom: 0,
+      marginLeft: amount,
+      marginRight: amount,
+    },
+    spacerY: {
+      marginTop: amount,
+      marginBottom: amount,
+      marginLeft: 0,
+      marginRight: 0,
+    },
+  };
 });
 
 export default Spacer;
