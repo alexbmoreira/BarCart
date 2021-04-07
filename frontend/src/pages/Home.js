@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Text, Title } from 'react-native-paper';
+import { withTheme } from 'react-native-paper';
+import { FontAwesome } from '@expo/vector-icons';
 
 import Spacer from '../components/theme/Spacer';
 
@@ -9,8 +11,16 @@ import DrinkTile from '../components/common/DrinkTile';
 
 import { Context as DrinkContext } from '../contexts/DrinkContext';
 
-export default function Home({ navigation }) {
+function Home({ navigation, theme }) {
+  const { colors } = theme;
   const { state, getPopularDrinks, getUserDrinks, getUserOnTap, getUserLikes } = useContext(DrinkContext);
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      title: 'Home',
+      tabBarIcon: () => <FontAwesome name="home" size={36} color={colors.surface} />,
+    });
+  }, [navigation, colors.surface]);
 
   useEffect(() => {
     const ud = navigation.addListener('focus', async () => {
@@ -66,3 +76,5 @@ export default function Home({ navigation }) {
     </SafeAreaView>
   );
 }
+
+export default withTheme(Home);
