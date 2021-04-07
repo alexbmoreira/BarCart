@@ -21,7 +21,10 @@ async function getPopularDrinks() {
 }
 
 async function createDrink(drinkData) {
-  return api.post('/users/drinks/', drinkData).then(() => {});
+  return api
+    .post('/users/drinks/', drinkData)
+    .then(() => {})
+    .catch((e) => console.log(e.response.data));
 }
 
 async function getIngredients() {

@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Button, TextInput } from 'react-native-paper';
+import { Text, Button, TextInput } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { withTheme } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
@@ -15,10 +15,10 @@ function CreateDrink({ navigation, theme }) {
 
   const [drinkName, setDrinkName] = useState('');
   const [instructions, setInstructions] = useState('');
-  const [ingredient, setIngredient] = useState({});
-  const [quantity, setQuantity] = useState(0);
-  const [units, setUnits] = useState('');
-  // const [ingredients, setIngredients] = useState([]);
+  // const [ingredient, setIngredient] = useState({});
+  // const [quantity, setQuantity] = useState(0);
+  // const [units, setUnits] = useState('');
+  const [ingredients, setIngredients] = useState([]);
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -36,7 +36,6 @@ function CreateDrink({ navigation, theme }) {
   }, [navigation, getIngredients, state]);
 
   const submitCreateDrink = () => {
-    const ingredients = [{ name: ingredient.name, ingredient: ingredient.ingredient, quantity, units }];
     createDrink({ name: drinkName, instructions, ingredients });
   };
 
@@ -59,15 +58,13 @@ function CreateDrink({ navigation, theme }) {
     return { label: ing.name, value: ing.id };
   });
 
-  const ingredientValueChange = (id, i) => {
-    if (id) {
-      setIngredient({ ingredient: id, name: ingredientsArray[i - 1].label });
-    }
+  const addedIngredients = ingredients.map((ing, i) => {
+    return <Text key={i}>{ing.name}</Text>;
+  });
+
+  const addIngredient = ({ ingredient, quantity, units }) => {
+    setIngredients([...ingredients, { name: ingredient.name, ingredient: ingredient.ingredient, quantity, units }]);
   };
-
-  const quantityValueChange = (newQuantity) => setQuantity(newQuantity);
-
-  const unitValueChange = (newUnits) => setUnits(newUnits);
 
   return (
     <SafeAreaView>
@@ -76,7 +73,9 @@ function CreateDrink({ navigation, theme }) {
         <Spacer />
         <TextInput placeholder="Instructions" value={instructions} onChangeText={(newInstructions) => setInstructions(newInstructions)} multiline numberOfLines={5} />
         <Spacer />
-        <IngredientPicker ingredientValueChange={ingredientValueChange} quantityValueChange={quantityValueChange} unitValueChange={unitValueChange} ingredientsArray={ingredientsArray} pickerUnits={pickerUnits} />
+        {addedIngredients}
+        <Spacer />
+        <IngredientPicker addIngredient={addIngredient} ingredientsArray={ingredientsArray} pickerUnits={pickerUnits} />
         <Spacer />
         <Button onPress={submitCreateDrink}>Create Drink</Button>
       </Spacer>
