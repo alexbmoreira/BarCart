@@ -20,10 +20,15 @@ async function getPopularDrinks() {
   return api.get('/drinks/popular/').then((response) => response.data);
 }
 
+async function createDrink() {
+  return api.post('/users/drinks/').then((response) => response.data);
+}
+
 export default {
   getUser,
   getUserDrinks,
   getUserOnTap,
   getUserLikes,
   getPopularDrinks,
+  createDrink,
 };

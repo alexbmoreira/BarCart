@@ -1,6 +1,6 @@
 import createDataContext from './createDataContext';
 
-import profileAPI from '../api/profile';
+import drinksAPI from '../api/drinks';
 
 const drinksReducer = (state, action) => {
   switch (action.type) {
@@ -19,28 +19,28 @@ const drinksReducer = (state, action) => {
 
 const getUserDrinks = (dispatch) => {
   return async () => {
-    const userDrinks = await profileAPI.getUserDrinks();
+    const userDrinks = await drinksAPI.getUserDrinks();
     dispatch({ type: 'get_user_drinks', payload: userDrinks });
   };
 };
 
 const getUserOnTap = (dispatch) => {
   return async () => {
-    const userOnTap = await profileAPI.getUserOnTap();
+    const userOnTap = await drinksAPI.getUserOnTap();
     dispatch({ type: 'get_user_ontap', payload: userOnTap });
   };
 };
 
 const getUserLikes = (dispatch) => {
   return async () => {
-    const userLikes = await profileAPI.getUserLikes();
+    const userLikes = await drinksAPI.getUserLikes();
     dispatch({ type: 'get_user_likes', payload: userLikes });
   };
 };
 
 const getPopularDrinks = (dispatch) => {
   return async () => {
-    const popularDrinks = await profileAPI.getPopularDrinks();
+    const popularDrinks = await drinksAPI.getPopularDrinks();
     dispatch({ type: 'get_popular_drinks', payload: popularDrinks });
   };
 };
