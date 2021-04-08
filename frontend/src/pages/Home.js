@@ -18,7 +18,6 @@ function Home({ navigation, theme }) {
       await getUserOnTap();
       await getUserLikes();
     });
-
     return ud;
   }, [navigation, getPopularDrinks, getUserDrinks, getUserOnTap, getUserLikes, state]);
 

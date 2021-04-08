@@ -9,7 +9,7 @@ import Spacer from '../components/theme/Spacer';
 import { Context as AuthContext } from '../contexts/AuthContext';
 
 function ProfileSettings() {
-  const { logout } = useContext(AuthContext);
+  const { state, logout } = useContext(AuthContext);
 
   const logoutUser = () => {
     logout();
@@ -21,7 +21,7 @@ function ProfileSettings() {
         <Spacer y amount={5}>
           <Spacer x amount={15}>
             <Button onPress={logoutUser}>Log out</Button>
-            <Title>[USERNAME]</Title>
+            <Title>{state.userInfo ? state.userInfo.username : ''}</Title>
             <Text style={styles.text}>account settings</Text>
           </Spacer>
         </Spacer>
