@@ -11,6 +11,7 @@ import Home from './src/pages/Home';
 import OnTap from './src/pages/OnTap';
 import CreateDrink from './src/pages/CreateDrink';
 import Profile from './src/pages/Profile';
+import ProfileSettings from './src/pages/ProfileSettings';
 import Search from './src/pages/Search';
 import Login from './src/pages/Login';
 import Register from './src/pages/Register';
@@ -27,6 +28,16 @@ import { navigationRef } from './src/RootNavigation';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+const ProfileStack = createStackNavigator();
+
+function ProfileNav() {
+  return (
+    <ProfileStack.Navigator>
+      <ProfileStack.Screen name="Profile" component={Profile} options={{ headerLeft: () => null }} />
+      <ProfileStack.Screen name="ProfileSettings" component={ProfileSettings} />
+    </ProfileStack.Navigator>
+  );
+}
 
 function MainTabs() {
   const { colors } = useTheme();
@@ -66,8 +77,8 @@ function MainTabs() {
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={Profile}
+        name="ProfileStack"
+        component={ProfileNav}
         options={{
           title: 'Profile',
           tabBarIcon: () => <FontAwesome name="user-circle" size={32} color={colors.surface} />,

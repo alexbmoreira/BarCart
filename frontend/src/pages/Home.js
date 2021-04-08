@@ -4,7 +4,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Text, Title } from 'react-native-paper';
 
 import Spacer from '../components/theme/Spacer';
-
 import DrinkTile from '../components/common/DrinkTile';
 
 import { Context as DrinkContext } from '../contexts/DrinkContext';
@@ -19,7 +18,6 @@ function Home({ navigation, theme }) {
       await getUserOnTap();
       await getUserLikes();
     });
-
     return ud;
   }, [navigation, getPopularDrinks, getUserDrinks, getUserOnTap, getUserLikes, state]);
 

@@ -6,8 +6,11 @@ export default function Login({ navigation }) {
   const { tryLocalLogin } = useContext(AuthContext);
 
   useEffect(() => {
-    tryLocalLogin();
-  }, [tryLocalLogin]);
+    const loc = navigation.addListener('focus', async () => {
+      tryLocalLogin();
+    });
+    return loc;
+  }, [navigation, tryLocalLogin]);
 
   return null;
 }

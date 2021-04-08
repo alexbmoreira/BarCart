@@ -21,7 +21,7 @@ export default function IngredientPicker(props) {
   return (
     <View>
       <RNPickerSelect placeholder={{ label: 'Select an ingredient...' }} onValueChange={ingredientValueChange} items={props.ingredientsArray} />
-      <TextInput keyboardType="decimal-pad" onChangeText={quantityValueChange} />
+      <TextInput mode={'outlined'} keyboardType="decimal-pad" onChangeText={quantityValueChange} />
       <RNPickerSelect placeholder={{ label: 'Select a measurement unit...' }} onValueChange={unitValueChange} items={props.pickerUnits} />
       <Button onPress={props.addIngredient.bind(this, { ingredient, quantity, units })}>Add</Button>
     </View>

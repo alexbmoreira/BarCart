@@ -1,20 +1,51 @@
 import React, { useContext } from 'react';
-import { Text, Button } from 'react-native-paper';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { ScrollView } from 'react-native-gesture-handler';
+import { Title, Button } from 'react-native-paper';
+import { useTheme } from 'react-native-paper';
+import { FontAwesome } from '@expo/vector-icons';
 
+import Spacer from '../components/theme/Spacer';
+import DrinkTile from '../components/common/DrinkTile';
+
+import { Context as DrinkContext } from '../contexts/DrinkContext';
 import { Context as AuthContext } from '../contexts/AuthContext';
 
-export default function Profile() {
-  const { logout } = useContext(AuthContext);
+function Profile({ navigation }) {
+  const { colors } = useTheme();
 
-  const logoutUser = () => {
-    logout();
+  const { state: drinkState } = useContext(DrinkContext);
+  const { state: authState } = useContext(AuthContext);
+
+  const viewSettings = () => {
+    navigation.navigate('ProfileSettings');
   };
 
+  const userDrinksArray = drinkState.userDrinks.map((drink, i) => {
+    return <DrinkTile key={drinkState.userDrinks[i].id} drink={drinkState.userDrinks[i]} />;
+  });
+
+  const userOnTapArray = drinkState.userOnTap.map((drink, i) => {
+    return <DrinkTile key={drinkState.userOnTap[i].id} drink={drinkState.userOnTap[i]} />;
+  });
+
   return (
-    <SafeAreaView>
-      <Text>Profile</Text>
-      <Button onPress={logoutUser}>Log out</Button>
-    </SafeAreaView>
+    <ScrollView>
+      <Spacer>
+        <Title>{authState.userInfo.username}</Title>
+        <Button onPress={() => viewSettings()}>
+          <FontAwesome name="gear" size={32} color={colors.surface} />
+        </Button>
+      </Spacer>
+      <Spacer x>
+        <Title>Your Drinks</Title>
+      </Spacer>
+      <ScrollView horizontal>{userDrinksArray}</ScrollView>
+      <Spacer x>
+        <Title>On Tap</Title>
+      </Spacer>
+      <ScrollView horizontal>{userOnTapArray}</ScrollView>
+    </ScrollView>
   );
 }
+
+export default Profile;
