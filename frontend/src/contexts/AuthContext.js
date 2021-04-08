@@ -3,7 +3,6 @@ import createDataContext from './createDataContext';
 
 import { navigate } from '../RootNavigation';
 
-import api from '../api/api.service.js';
 import profileAPI from '../api/profile';
 
 const authReducer = (state, action) => {
@@ -13,7 +12,7 @@ const authReducer = (state, action) => {
     case 'add_token':
       return { errorMessage: '', accessToken: action.payload };
     case 'clear_token':
-      return { errorMessage: '', accessToken: null };
+      return { errorMessage: '', accessToken: null, userInfo: {} };
     case 'add_error':
       return { ...state, errorMessage: action.payload };
     case 'clear_error':
@@ -46,7 +45,7 @@ const tryLocalLogin = (dispatch) => {
 const register = (dispatch) => {
   return async ({ firstName, lastName, username, email, password, confirmPassword }) => {
     try {
-      const regResponse = await api.post('/rest-auth/register/', { firstName, lastName, username, email, password1: password, password2: confirmPassword });
+      const regResponse = await profileAPI.register({ firstName, lastName, username, email, password1: password, password2: confirmPassword });
       await AsyncStorage.setItem('access_token', regResponse.data.key);
       dispatch({ type: 'add_token', payload: regResponse.data.key });
 
@@ -64,7 +63,7 @@ const register = (dispatch) => {
 const login = (dispatch) => {
   return async ({ username, password }) => {
     try {
-      const loginResponse = await api.post('/rest-auth/login/', { username, password });
+      const loginResponse = await profileAPI.login({ username, password });
       await AsyncStorage.setItem('access_token', loginResponse.data.key);
       dispatch({ type: 'add_token', payload: loginResponse.data.key });
 
@@ -82,7 +81,7 @@ const login = (dispatch) => {
 const logout = (dispatch) => {
   return async () => {
     try {
-      await api.post('/rest-auth/logout/');
+      await profileAPI.logout('/rest-auth/logout/');
       await AsyncStorage.removeItem('access_token');
       dispatch({ type: 'clear_token' });
       navigate('Login');
