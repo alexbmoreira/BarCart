@@ -1,26 +1,44 @@
-import React from 'react';
-import { Text, Title, Button } from 'react-native-paper';
+import React, { useContext } from 'react';
+import { ScrollView } from 'react-native-gesture-handler';
+import { Title, Button } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Spacer from '../components/theme/Spacer';
+import DrinkTile from '../components/common/DrinkTile';
+
+import { Context as DrinkContext } from '../contexts/DrinkContext';
+import { Context as AuthContext } from '../contexts/AuthContext';
 
 function Profile({ navigation }) {
+  const { state: drinkState } = useContext(DrinkContext);
+  const { state: authState } = useContext(AuthContext);
+
   const viewSettings = () => {
     navigation.navigate('ProfileSettings');
   };
 
+  const userDrinksArray = drinkState.userDrinks.map((drink, i) => {
+    return <DrinkTile key={drinkState.userDrinks[i].id} drink={drinkState.userDrinks[i]} />;
+  });
+
+  const userOnTapArray = drinkState.userOnTap.map((drink, i) => {
+    return <DrinkTile key={drinkState.userOnTap[i].id} drink={drinkState.userOnTap[i]} />;
+  });
+
   return (
     <SafeAreaView>
-      <Text>Profile</Text>
       <Spacer>
+        <Title>{authState.userInfo.username}</Title>
         <Button icon={require('../../assets/settings-icon.png')} onPress={() => viewSettings()} />
       </Spacer>
       <Spacer x>
         <Title>Your Drinks</Title>
       </Spacer>
+      <ScrollView horizontal>{userDrinksArray}</ScrollView>
       <Spacer x>
         <Title>On Tap</Title>
       </Spacer>
+      <ScrollView horizontal>{userOnTapArray}</ScrollView>
     </SafeAreaView>
   );
 }
