@@ -28,6 +28,16 @@ import { navigationRef } from './src/RootNavigation';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+const ProfileStack = createStackNavigator();
+
+function ProfileNav() {
+  return (
+    <ProfileStack.Navigator>
+      <ProfileStack.Screen name="Profile" component={Profile} />
+      <ProfileStack.Screen name="ProfileSettings" component={ProfileSettings} />
+    </ProfileStack.Navigator>
+  );
+}
 
 function MainTabs() {
   const { colors } = useTheme();
@@ -67,8 +77,8 @@ function MainTabs() {
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={Profile}
+        name="ProfileStack"
+        component={ProfileNav}
         options={{
           title: 'Profile',
           tabBarIcon: () => <FontAwesome name="user-circle" size={32} color={colors.surface} />,
@@ -86,7 +96,6 @@ function AppNavigator() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Main" component={MainTabs} />
-        <Stack.Screen name="ProfileSettings" component={ProfileSettings} />
       </Stack.Navigator>
     </NavigationContainer>
   );
