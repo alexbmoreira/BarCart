@@ -20,7 +20,7 @@ def save_user_profile(sender, instance, **kwargs):
 @receiver(post_save, sender=OnHandIngredient)
 def save_on_hand(sender, instance, **kwargs):
     for drink in Profile.objects.get_on_tap(instance.user.profile):
-        if not OnTapDrink.objects.get(drink=drink):
+        if not OnTapDrink.objects.filter(drink=drink):
             OnTapDrink.objects.create(user=instance.user, drink=drink)
 
 
