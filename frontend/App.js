@@ -31,6 +31,7 @@ const Stack = createStackNavigator();
 const HomeNav = createStackNavigator();
 const SearchNav = createStackNavigator();
 const CreateDrinkNav = createStackNavigator();
+const OnTapNav = createStackNavigator();
 const ProfileNav = createStackNavigator();
 
 function HomeStack() {
@@ -54,6 +55,14 @@ function CreateDrinkStack() {
     <CreateDrinkNav.Navigator>
       <CreateDrinkNav.Screen name="CreateDrink" component={CreateDrink} options={{ headerLeft: () => null }} />
     </CreateDrinkNav.Navigator>
+  );
+}
+
+function OnTapStack() {
+  return (
+    <OnTapNav.Navigator>
+      <OnTapNav.Screen name="OnTap" component={OnTap} options={{ headerLeft: () => null }} />
+    </OnTapNav.Navigator>
   );
 }
 
@@ -96,8 +105,8 @@ function MainTabs() {
         }}
       />
       <Tab.Screen
-        name="OnTap"
-        component={OnTap}
+        name="OnTapStack"
+        component={OnTapStack}
         options={{
           title: 'On Tap',
           tabBarIcon: () => <FontAwesome name="glass" size={32} color={colors.surface} />,
