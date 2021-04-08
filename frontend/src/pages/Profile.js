@@ -1,20 +1,43 @@
-import React, { useContext } from 'react';
-import { Text, Button } from 'react-native-paper';
+import React from 'react';
+import { Text, Title, Button, withTheme } from 'react-native-paper';
+
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { Context as AuthContext } from '../contexts/AuthContext';
+import { FontAwesome } from '@expo/vector-icons';
 
-export default function Profile() {
-  const { logout } = useContext(AuthContext);
+import Spacer from '../components/theme/Spacer';
 
-  const logoutUser = () => {
-    logout();
-  };
+function Profile({navigation, theme}) {
+  const { colors } = theme;
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      title: 'Profile',
+      tabBarIcon: () => <FontAwesome name="user" size={36} color={colors.surface} />,
+    });
+  }, [navigation, colors.surface]);
+
+  const viewSettings = () => {
+    navigation.navigate('ProfileSettings')
+  }
 
   return (
     <SafeAreaView>
       <Text>Profile</Text>
-      <Button onPress={logoutUser}>Log out</Button>
+      <Spacer>
+        <Button 
+          icon={require('../../assets/settings-icon.png')}
+          onPress={() => viewSettings()}
+        />
+      </Spacer>
+      <Spacer x>
+        <Title>Your Drinks</Title>
+      </Spacer>
+      <Spacer x>
+        <Title>On Tap</Title>
+      </Spacer>
     </SafeAreaView>
   );
 }
+
+export default withTheme(Profile);

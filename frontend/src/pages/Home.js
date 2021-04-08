@@ -1,12 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Text, Title } from 'react-native-paper';
-import { withTheme } from 'react-native-paper';
+import { Text, Title, withTheme } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 
 import Spacer from '../components/theme/Spacer';
-
 import DrinkTile from '../components/common/DrinkTile';
 
 import { Context as DrinkContext } from '../contexts/DrinkContext';
