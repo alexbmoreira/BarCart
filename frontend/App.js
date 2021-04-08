@@ -28,14 +28,50 @@ import { navigationRef } from './src/RootNavigation';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-const ProfileStack = createStackNavigator();
+const HomeNav = createStackNavigator();
+const SearchNav = createStackNavigator();
+const CreateDrinkNav = createStackNavigator();
+const OnTapNav = createStackNavigator();
+const ProfileNav = createStackNavigator();
 
-function ProfileNav() {
+function HomeStack() {
   return (
-    <ProfileStack.Navigator>
-      <ProfileStack.Screen name="Profile" component={Profile} options={{ headerLeft: () => null }} />
-      <ProfileStack.Screen name="ProfileSettings" component={ProfileSettings} />
-    </ProfileStack.Navigator>
+    <HomeNav.Navigator>
+      <HomeNav.Screen name="Home" component={Home} options={{ headerLeft: () => null }} />
+    </HomeNav.Navigator>
+  );
+}
+
+function SearchStack() {
+  return (
+    <SearchNav.Navigator>
+      <SearchNav.Screen name="Search" component={Search} options={{ headerLeft: () => null }} />
+    </SearchNav.Navigator>
+  );
+}
+
+function CreateDrinkStack() {
+  return (
+    <CreateDrinkNav.Navigator>
+      <CreateDrinkNav.Screen name="CreateDrink" component={CreateDrink} options={{ headerLeft: () => null }} />
+    </CreateDrinkNav.Navigator>
+  );
+}
+
+function OnTapStack() {
+  return (
+    <OnTapNav.Navigator>
+      <OnTapNav.Screen name="OnTap" component={OnTap} options={{ headerLeft: () => null }} />
+    </OnTapNav.Navigator>
+  );
+}
+
+function ProfileStack() {
+  return (
+    <ProfileNav.Navigator>
+      <ProfileNav.Screen name="Profile" component={Profile} options={{ headerLeft: () => null }} />
+      <ProfileNav.Screen name="ProfileSettings" component={ProfileSettings} />
+    </ProfileNav.Navigator>
   );
 }
 
@@ -45,32 +81,32 @@ function MainTabs() {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="HomeStack"
+        component={HomeStack}
         options={{
           title: 'Home',
           tabBarIcon: () => <FontAwesome name="home" size={36} color={colors.surface} />,
         }}
       />
       <Tab.Screen
-        name="Search"
-        component={Search}
+        name="SearchStack"
+        component={SearchStack}
         options={{
           title: 'Search',
           tabBarIcon: () => <FontAwesome name="search" size={32} color={colors.surface} />,
         }}
       />
       <Tab.Screen
-        name="CreateDrink"
-        component={CreateDrink}
+        name="CreateDrinkStack"
+        component={CreateDrinkStack}
         options={{
           title: 'Create Drink',
           tabBarIcon: () => <FontAwesome name="plus-square" size={32} color={colors.surface} />,
         }}
       />
       <Tab.Screen
-        name="OnTap"
-        component={OnTap}
+        name="OnTapStack"
+        component={OnTapStack}
         options={{
           title: 'On Tap',
           tabBarIcon: () => <FontAwesome name="glass" size={32} color={colors.surface} />,
@@ -78,7 +114,7 @@ function MainTabs() {
       />
       <Tab.Screen
         name="ProfileStack"
-        component={ProfileNav}
+        component={ProfileStack}
         options={{
           title: 'Profile',
           tabBarIcon: () => <FontAwesome name="user-circle" size={32} color={colors.surface} />,

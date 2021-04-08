@@ -1,11 +1,11 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View } from 'react-native';
 import { Text } from 'react-native-paper';
 
 export default function OnTap() {
   return (
-    <SafeAreaView>
+    <View>
       <Text>On Tap</Text>
-    </SafeAreaView>
+    </View>
   );
 }

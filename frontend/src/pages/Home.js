@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Text, Title } from 'react-native-paper';
 
 import Spacer from '../components/theme/Spacer';
@@ -38,30 +37,28 @@ function Home({ navigation, theme }) {
   });
 
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <Spacer>
-          <Text>BarCart is a mobileapp designed to get the right drink in your hands</Text>
-          <Text>Check out the "On Tap" section for drinks that you can make right now</Text>
-        </Spacer>
-        <Spacer x>
-          <Title>Popular</Title>
-        </Spacer>
-        <ScrollView horizontal>{popularDrinksArray}</ScrollView>
-        <Spacer x>
-          <Title>Your Drinks</Title>
-        </Spacer>
-        <ScrollView horizontal>{userDrinksArray}</ScrollView>
-        <Spacer x>
-          <Title>On Tap</Title>
-        </Spacer>
-        <ScrollView horizontal>{userOnTapArray}</ScrollView>
-        <Spacer x>
-          <Title>Your Likes</Title>
-        </Spacer>
-        <ScrollView horizontal>{userLikesArray}</ScrollView>
-      </ScrollView>
-    </SafeAreaView>
+    <ScrollView>
+      <Spacer>
+        <Title>BarCart is an app designed to get the right drink in your hands!</Title>
+        <Text>Check out the "On Tap" section for drinks that you can make right now.</Text>
+      </Spacer>
+      <Spacer x>
+        <Title>Popular</Title>
+      </Spacer>
+      <ScrollView horizontal>{popularDrinksArray}</ScrollView>
+      <Spacer x>
+        <Title>Your Drinks</Title>
+      </Spacer>
+      <ScrollView horizontal>{userDrinksArray}</ScrollView>
+      <Spacer x>
+        <Title>On Tap</Title>
+      </Spacer>
+      <ScrollView horizontal>{userOnTapArray}</ScrollView>
+      <Spacer x>
+        <Title>Your Likes</Title>
+      </Spacer>
+      <ScrollView horizontal>{userLikesArray}</ScrollView>
+    </ScrollView>
   );
 }
 

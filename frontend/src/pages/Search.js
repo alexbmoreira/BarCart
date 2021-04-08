@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Searchbar } from 'react-native-paper';
 
 import Spacer from '../components/theme/Spacer';
@@ -29,11 +28,11 @@ export default function Search() {
   });
 
   return (
-    <SafeAreaView>
+    <View>
       <Spacer>
         <Searchbar placeholder="Search for drinks..." onChangeText={onChangeSearch} value={searchTerm} onSubmitEditing={performSearch} />
       </Spacer>
       <ScrollView>{drinks}</ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
