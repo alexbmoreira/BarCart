@@ -6,11 +6,11 @@ import { Context as SearchContext } from '../contexts/SearchContext';
 
 export default function Search() {
   const { state, getDrinks } = useContext(SearchContext);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const onChangeSearch = (query) => setSearchQuery(query);
+  const onChangeSearch = (query) => setSearchTerm(query);
 
-  const performSearch = () => getDrinks(searchQuery);
+  const performSearch = () => getDrinks({ searchTerm });
 
   const drinks = state.searchDrinks.map((drink) => {
     return <Text key={drink.id}>{drink.name}</Text>;
@@ -18,7 +18,7 @@ export default function Search() {
 
   return (
     <SafeAreaView>
-      <Searchbar placeholder="Search for drinks..." onChangeText={onChangeSearch} value={searchQuery} onSubmitEditing={performSearch} />
+      <Searchbar placeholder="Search for drinks..." onChangeText={onChangeSearch} value={searchTerm} onSubmitEditing={performSearch} />
       {drinks}
     </SafeAreaView>
   );
