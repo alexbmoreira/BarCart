@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Title, Button } from 'react-native-paper';
 import { useTheme } from 'react-native-paper';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { FontAwesome } from '@expo/vector-icons';
 
 import Spacer from '../components/theme/Spacer';
@@ -30,7 +29,7 @@ function Profile({ navigation }) {
   });
 
   return (
-    <SafeAreaView>
+    <ScrollView>
       <Spacer>
         <Title>{authState.userInfo.username}</Title>
         <Button onPress={() => viewSettings()}>
@@ -45,7 +44,7 @@ function Profile({ navigation }) {
         <Title>On Tap</Title>
       </Spacer>
       <ScrollView horizontal>{userOnTapArray}</ScrollView>
-    </SafeAreaView>
+    </ScrollView>
   );
 }
 
