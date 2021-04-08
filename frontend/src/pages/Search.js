@@ -1,6 +1,11 @@
 import React, { useState, useContext } from 'react';
+import { View } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Text, Searchbar } from 'react-native-paper';
+import { Searchbar } from 'react-native-paper';
+
+import Spacer from '../components/theme/Spacer';
+import DrinkListItem from '../components/common/DrinkListItem';
 
 import { Context as SearchContext } from '../contexts/SearchContext';
 
@@ -12,14 +17,23 @@ export default function Search() {
 
   const performSearch = () => getDrinks({ searchTerm });
 
-  const drinks = state.searchDrinks.map((drink) => {
-    return <Text key={drink.id}>{drink.name}</Text>;
+  const drinks = state.searchDrinks.map((drink, i) => {
+    return (
+      <View key={drink.id}>
+        <Spacer x>
+          <DrinkListItem drink={drink} />
+          <Spacer amount={5} />
+        </Spacer>
+      </View>
+    );
   });
 
   return (
     <SafeAreaView>
-      <Searchbar placeholder="Search for drinks..." onChangeText={onChangeSearch} value={searchTerm} onSubmitEditing={performSearch} />
-      {drinks}
+      <Spacer>
+        <Searchbar placeholder="Search for drinks..." onChangeText={onChangeSearch} value={searchTerm} onSubmitEditing={performSearch} />
+      </Spacer>
+      <ScrollView>{drinks}</ScrollView>
     </SafeAreaView>
   );
 }
