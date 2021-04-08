@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Title, Button } from 'react-native-paper';
+import { useTheme } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { FontAwesome } from '@expo/vector-icons';
 
 import Spacer from '../components/theme/Spacer';
 import DrinkTile from '../components/common/DrinkTile';
@@ -10,6 +12,8 @@ import { Context as DrinkContext } from '../contexts/DrinkContext';
 import { Context as AuthContext } from '../contexts/AuthContext';
 
 function Profile({ navigation }) {
+  const { colors } = useTheme();
+
   const { state: drinkState } = useContext(DrinkContext);
   const { state: authState } = useContext(AuthContext);
 
@@ -29,7 +33,9 @@ function Profile({ navigation }) {
     <SafeAreaView>
       <Spacer>
         <Title>{authState.userInfo.username}</Title>
-        <Button icon={require('../../assets/settings-icon.png')} onPress={() => viewSettings()} />
+        <Button onPress={() => viewSettings()}>
+          <FontAwesome name="gear" size={32} color={colors.surface} />
+        </Button>
       </Spacer>
       <Spacer x>
         <Title>Your Drinks</Title>
