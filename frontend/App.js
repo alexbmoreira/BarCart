@@ -21,6 +21,7 @@ import BarCartTheme from './src/BarCartTheme';
 import { Provider as AuthProvider } from './src/contexts/AuthContext';
 import { Provider as DrinksProvider } from './src/contexts/DrinkContext';
 import { Provider as DrinkCreateProvider } from './src/contexts/DrinkCreateContext';
+import { Provider as DrinkSearchProvider } from './src/contexts/SearchContext';
 
 import { navigationRef } from './src/RootNavigation';
 
@@ -94,11 +95,13 @@ export default function App() {
     <SafeAreaProvider>
       <AuthProvider>
         <DrinksProvider>
-          <DrinkCreateProvider>
-            <PaperProvider theme={BarCartTheme.theme}>
-              <AppNavigator />
-            </PaperProvider>
-          </DrinkCreateProvider>
+          <DrinkSearchProvider>
+            <DrinkCreateProvider>
+              <PaperProvider theme={BarCartTheme.theme}>
+                <AppNavigator />
+              </PaperProvider>
+            </DrinkCreateProvider>
+          </DrinkSearchProvider>
         </DrinksProvider>
       </AuthProvider>
     </SafeAreaProvider>
