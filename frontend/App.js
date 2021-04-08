@@ -30,6 +30,7 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const HomeNav = createStackNavigator();
 const SearchNav = createStackNavigator();
+const CreateDrinkNav = createStackNavigator();
 const ProfileNav = createStackNavigator();
 
 function HomeStack() {
@@ -45,6 +46,14 @@ function SearchStack() {
     <SearchNav.Navigator>
       <SearchNav.Screen name="Search" component={Search} options={{ headerLeft: () => null }} />
     </SearchNav.Navigator>
+  );
+}
+
+function CreateDrinkStack() {
+  return (
+    <CreateDrinkNav.Navigator>
+      <CreateDrinkNav.Screen name="CreateDrink" component={CreateDrink} options={{ headerLeft: () => null }} />
+    </CreateDrinkNav.Navigator>
   );
 }
 
@@ -79,8 +88,8 @@ function MainTabs() {
         }}
       />
       <Tab.Screen
-        name="CreateDrink"
-        component={CreateDrink}
+        name="CreateDrinkStack"
+        component={CreateDrinkStack}
         options={{
           title: 'Create Drink',
           tabBarIcon: () => <FontAwesome name="plus-square" size={32} color={colors.surface} />,
