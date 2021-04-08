@@ -28,7 +28,16 @@ import { navigationRef } from './src/RootNavigation';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+const HomeStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
+
+function HomeNav() {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen name="Home" component={Home} options={{ headerLeft: () => null }} />
+    </HomeStack.Navigator>
+  );
+}
 
 function ProfileNav() {
   return (
@@ -45,8 +54,8 @@ function MainTabs() {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="HomeStack"
+        component={HomeNav}
         options={{
           title: 'Home',
           tabBarIcon: () => <FontAwesome name="home" size={36} color={colors.surface} />,
