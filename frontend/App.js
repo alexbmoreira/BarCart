@@ -33,7 +33,7 @@ const ProfileStack = createStackNavigator();
 function ProfileNav() {
   return (
     <ProfileStack.Navigator>
-      <ProfileStack.Screen name="Profile" component={Profile} />
+      <ProfileStack.Screen name="Profile" component={Profile} options={{ headerLeft: () => null }} />
       <ProfileStack.Screen name="ProfileSettings" component={ProfileSettings} />
     </ProfileStack.Navigator>
   );
