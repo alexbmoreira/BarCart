@@ -28,23 +28,32 @@ import { navigationRef } from './src/RootNavigation';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-const HomeStack = createStackNavigator();
-const ProfileStack = createStackNavigator();
+const HomeNav = createStackNavigator();
+const SearchNav = createStackNavigator();
+const ProfileNav = createStackNavigator();
 
-function HomeNav() {
+function HomeStack() {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={Home} options={{ headerLeft: () => null }} />
-    </HomeStack.Navigator>
+    <HomeNav.Navigator>
+      <HomeNav.Screen name="Home" component={Home} options={{ headerLeft: () => null }} />
+    </HomeNav.Navigator>
   );
 }
 
-function ProfileNav() {
+function SearchStack() {
   return (
-    <ProfileStack.Navigator>
-      <ProfileStack.Screen name="Profile" component={Profile} options={{ headerLeft: () => null }} />
-      <ProfileStack.Screen name="ProfileSettings" component={ProfileSettings} />
-    </ProfileStack.Navigator>
+    <SearchNav.Navigator>
+      <SearchNav.Screen name="Search" component={Search} options={{ headerLeft: () => null }} />
+    </SearchNav.Navigator>
+  );
+}
+
+function ProfileStack() {
+  return (
+    <ProfileNav.Navigator>
+      <ProfileNav.Screen name="Profile" component={Profile} options={{ headerLeft: () => null }} />
+      <ProfileNav.Screen name="ProfileSettings" component={ProfileSettings} />
+    </ProfileNav.Navigator>
   );
 }
 
@@ -55,15 +64,15 @@ function MainTabs() {
     <Tab.Navigator>
       <Tab.Screen
         name="HomeStack"
-        component={HomeNav}
+        component={HomeStack}
         options={{
           title: 'Home',
           tabBarIcon: () => <FontAwesome name="home" size={36} color={colors.surface} />,
         }}
       />
       <Tab.Screen
-        name="Search"
-        component={Search}
+        name="SearchStack"
+        component={SearchStack}
         options={{
           title: 'Search',
           tabBarIcon: () => <FontAwesome name="search" size={32} color={colors.surface} />,
@@ -87,7 +96,7 @@ function MainTabs() {
       />
       <Tab.Screen
         name="ProfileStack"
-        component={ProfileNav}
+        component={ProfileStack}
         options={{
           title: 'Profile',
           tabBarIcon: () => <FontAwesome name="user-circle" size={32} color={colors.surface} />,
