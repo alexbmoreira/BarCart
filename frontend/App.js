@@ -3,7 +3,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Provider as PaperProvider } from 'react-native-paper';
+import { useTheme } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { FontAwesome } from '@expo/vector-icons';
 
 import Home from './src/pages/Home';
 import OnTap from './src/pages/OnTap';
@@ -26,13 +28,50 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 function MainTabs() {
+  const { colors } = useTheme();
+
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Search" component={Search} />
-      <Tab.Screen name="CreateDrink" component={CreateDrink} />
-      <Tab.Screen name="OnTap" component={OnTap} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          title: 'Home',
+          tabBarIcon: () => <FontAwesome name="home" size={36} color={colors.surface} />,
+        }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={Search}
+        options={{
+          title: 'Search',
+          tabBarIcon: () => <FontAwesome name="search" size={32} color={colors.surface} />,
+        }}
+      />
+      <Tab.Screen
+        name="CreateDrink"
+        component={CreateDrink}
+        options={{
+          title: 'Create Drink',
+          tabBarIcon: () => <FontAwesome name="plus-square" size={32} color={colors.surface} />,
+        }}
+      />
+      <Tab.Screen
+        name="OnTap"
+        component={OnTap}
+        options={{
+          title: 'On Tap',
+          tabBarIcon: () => <FontAwesome name="glass" size={32} color={colors.surface} />,
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          title: 'Profile',
+          tabBarIcon: () => <FontAwesome name="user-circle" size={32} color={colors.surface} />,
+        }}
+      />
     </Tab.Navigator>
   );
 }

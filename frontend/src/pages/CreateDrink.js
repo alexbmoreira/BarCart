@@ -2,8 +2,6 @@ import React, { useContext, useState, useEffect } from 'react';
 import { View } from 'react-native';
 import { Text, Button, TextInput, Title } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { withTheme } from 'react-native-paper';
-import { FontAwesome } from '@expo/vector-icons';
 
 import Spacer from '../components/theme/Spacer';
 import DrinkIngredient from '../components/createDrink/DrinkIngredient';
@@ -13,19 +11,11 @@ import { Context as DrinkCreateContext } from '../contexts/DrinkCreateContext';
 import { ScrollView } from 'react-native-gesture-handler';
 
 function CreateDrink({ navigation, theme }) {
-  const { colors } = theme;
   const { state, createDrink, getIngredients } = useContext(DrinkCreateContext);
 
   const [drinkName, setDrinkName] = useState('');
   const [instructions, setInstructions] = useState('');
   const [ingredients, setIngredients] = useState([]);
-
-  React.useLayoutEffect(() => {
-    navigation.setOptions({
-      title: 'Create Drink',
-      tabBarIcon: () => <FontAwesome name="plus-square" size={32} color={colors.surface} />,
-    });
-  }, [navigation, colors.surface]);
 
   useEffect(() => {
     const ud = navigation.addListener('focus', async () => {
@@ -99,4 +89,4 @@ function CreateDrink({ navigation, theme }) {
   );
 }
 
-export default withTheme(CreateDrink);
+export default CreateDrink;
