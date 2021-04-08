@@ -72,10 +72,10 @@ function CreateDrink({ navigation, theme }) {
       <ScrollView>
         <Spacer>
           <Title>Name:</Title>
-          <TextInput placeholder="Drink Name" value={drinkName} onChangeText={(newDrinkName) => setDrinkName(newDrinkName)} autoCorrect={false} />
+          <TextInput mode={'outlined'} placeholder="Drink Name" value={drinkName} onChangeText={(newDrinkName) => setDrinkName(newDrinkName)} autoCorrect={false} />
           <Spacer />
           <Title>Instructions:</Title>
-          <TextInput placeholder="Instructions" value={instructions} onChangeText={(newInstructions) => setInstructions(newInstructions)} multiline numberOfLines={5} />
+          <TextInput mode={'outlined'} placeholder="Instructions" value={instructions} onChangeText={(newInstructions) => setInstructions(newInstructions)} multiline numberOfLines={5} />
           <Spacer />
           <Title>Ingredients:</Title>
           {ingredients.length > 0 ? addedIngredients : <Text>None</Text>}
