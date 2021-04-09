@@ -6,14 +6,15 @@ import { FontAwesome } from '@expo/vector-icons';
 import Spacer from '../theme/Spacer';
 import Flex from '../theme/Flex';
 
-function DrinkIngredient({ removeIngredient, ingredient, theme }) {
+function DrinkIngredient({ removeIngredient, ingredient, isBase, theme }) {
   const { colors } = theme;
   return (
     <Card>
       <Flex row>
         <Spacer>
           <Text style={{ color: colors.background }}>
-            {ingredient.quantity} {ingredient.units} of {ingredient.name}
+            {!isBase ? `${ingredient.quantity} ${ingredient.units} of ` : null}
+            {ingredient.name}
           </Text>
         </Spacer>
         <Button onPress={removeIngredient.bind(this, ingredient.ingredient)}>

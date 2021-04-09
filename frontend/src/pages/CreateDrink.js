@@ -17,11 +17,13 @@ function CreateDrink({ navigation, theme }) {
   const [ingredients, setIngredients] = useState([]);
 
   useEffect(() => {
-    const ud = navigation.addListener('focus', async () => {
-      await getIngredients();
+    const ing = navigation.addListener('focus', async () => {
+      if (state.ingredientsList.length <= 0) {
+        await getIngredients();
+      }
     });
 
-    return ud;
+    return ing;
   }, [navigation, getIngredients, state]);
 
   const submitCreateDrink = () => {

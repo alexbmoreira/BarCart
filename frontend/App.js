@@ -7,15 +7,16 @@ import { useTheme } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { FontAwesome } from '@expo/vector-icons';
 
-import Home from './src/pages/Home';
-import OnTap from './src/pages/OnTap';
-import CreateDrink from './src/pages/CreateDrink';
-import Profile from './src/pages/Profile';
-import ProfileSettings from './src/pages/ProfileSettings';
-import Search from './src/pages/Search';
 import Login from './src/pages/Login';
 import Register from './src/pages/Register';
 import ResolveAuth from './src/pages/ResolveAuth';
+import Home from './src/pages/Home';
+import Search from './src/pages/Search';
+import CreateDrink from './src/pages/CreateDrink';
+import OnTap from './src/pages/OnTap';
+import EditOnHand from './src/pages/EditOnHand';
+import Profile from './src/pages/Profile';
+import ProfileSettings from './src/pages/ProfileSettings';
 
 import BarCartTheme from './src/BarCartTheme';
 
@@ -23,6 +24,7 @@ import { Provider as AuthProvider } from './src/contexts/AuthContext';
 import { Provider as DrinksProvider } from './src/contexts/DrinkContext';
 import { Provider as DrinkCreateProvider } from './src/contexts/DrinkCreateContext';
 import { Provider as DrinkSearchProvider } from './src/contexts/SearchContext';
+import { Provider as OnHandProvider } from './src/contexts/OnHandContext';
 
 import { navigationRef } from './src/RootNavigation';
 
@@ -62,6 +64,7 @@ function OnTapStack() {
   return (
     <OnTapNav.Navigator>
       <OnTapNav.Screen name="OnTap" component={OnTap} options={{ headerLeft: () => null }} />
+      <OnTapNav.Screen name="EditOnHand" component={EditOnHand} />
     </OnTapNav.Navigator>
   );
 }
@@ -144,9 +147,11 @@ export default function App() {
         <DrinksProvider>
           <DrinkSearchProvider>
             <DrinkCreateProvider>
-              <PaperProvider theme={BarCartTheme.theme}>
-                <AppNavigator />
-              </PaperProvider>
+              <OnHandProvider>
+                <PaperProvider theme={BarCartTheme.theme}>
+                  <AppNavigator />
+                </PaperProvider>
+              </OnHandProvider>
             </DrinkCreateProvider>
           </DrinkSearchProvider>
         </DrinksProvider>
