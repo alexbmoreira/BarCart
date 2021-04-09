@@ -1,5 +1,7 @@
 import createDataContext from './createDataContext';
 
+import { navigate } from '../RootNavigation';
+
 import onHandAPI from '../api/onHand';
 
 const onHandReducer = (state, action) => {
@@ -14,6 +16,7 @@ const onHandReducer = (state, action) => {
 const addOnHand = (dispatch) => {
   return async (ingredients) => {
     await onHandAPI.addOnHand(ingredients);
+    navigate('OnTap');
   };
 };
 

@@ -23,12 +23,12 @@ export default function EditOnHand({ navigation }) {
         await getIngredients();
       }
       await getOnHand();
-      setIngredients(
-        onHandState.onHand.map((i) => {
-          return { ingredient: i.id || i.ingredient, name: i.name };
-        })
-      );
     });
+    setIngredients(
+      onHandState.onHand.map((i) => {
+        return { ingredient: i.id || i.ingredient, name: i.name };
+      })
+    );
 
     return ing;
   }, [navigation, getIngredients, ingredientsState, getOnHand, onHandState]);
