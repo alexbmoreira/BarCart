@@ -17,4 +17,11 @@ const addOnHand = (dispatch) => {
   };
 };
 
-export const { Provider, Context } = createDataContext(onHandReducer, { addOnHand }, { onHand: [] });
+const getOnHand = (dispatch) => {
+  return async () => {
+    const ingredients = await onHandAPI.getOnHand();
+    dispatch({ type: 'get_on_hand', payload: ingredients });
+  };
+};
+
+export const { Provider, Context } = createDataContext(onHandReducer, { addOnHand, getOnHand }, { onHand: [] });

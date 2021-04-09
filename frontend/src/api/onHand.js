@@ -14,7 +14,12 @@ async function removeOnHand(onHand) {
     .catch((e) => console.log(e.response.data));
 }
 
+async function getOnHand() {
+  return api.get('/users/onhand/').then((response) => response.data);
+}
+
 export default {
   addOnHand,
   removeOnHand,
+  getOnHand,
 };
