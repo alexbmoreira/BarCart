@@ -88,14 +88,20 @@ export default function EditOnHand({ navigation }) {
           <RNPickerSelect placeholder={{ label: 'Select an ingredient...' }} onValueChange={ingredientValueChange} items={ingredientsArray} />
         </Spacer>
         <Spacer y>
-          <Button onPress={addIngredientToList}>Add ingredient</Button>
+          <Button mode={'contained'} onPress={addIngredientToList}>
+            Add ingredient
+          </Button>
         </Spacer>
         {ingredients.length > 0 ? addedIngredients : <Text>None</Text>}
         <Spacer y>
-          <Button onPress={updateIngredients}>Update on hand</Button>
+          <Button mode={'contained'} onPress={updateIngredients}>
+            Update on hand
+          </Button>
         </Spacer>
         <Spacer y>
-          <Button onPress={() => navigation.navigate('OnTap')}>See what's On Tap</Button>
+          <Button mode={'contained'} onPress={() => navigation.navigate('OnTap')}>
+            See what's On Tap
+          </Button>
         </Spacer>
       </Spacer>
     </ScrollView>

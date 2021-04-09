@@ -82,7 +82,9 @@ function CreateDrink({ navigation, theme }) {
         <Spacer />
         <IngredientPicker addIngredient={addIngredient} ingredientsArray={ingredientsArray} pickerUnits={pickerUnits} />
         <Spacer />
-        <Button onPress={submitCreateDrink}>Create Drink</Button>
+        <Button mode={'contained'} onPress={submitCreateDrink}>
+          Create Drink
+        </Button>
       </Spacer>
     </ScrollView>
   );

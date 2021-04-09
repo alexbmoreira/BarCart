@@ -29,8 +29,8 @@ export default function Login({ navigation }) {
         <Spacer y amount={7} />
         <TextInput mode={'outlined'} placeholder="Password" value={password} onChangeText={(newPassword) => setPassword(newPassword)} autoCapitalize="none" autoCorrect={false} secureTextEntry />
         <Spacer y>
-          <Button title="Login" onPress={loginUser}>
-            <Text>Log In</Text>
+          <Button mode={'contained'} title="Login" onPress={loginUser}>
+            Log In
           </Button>
         </Spacer>
         {state.errorMessage ? <Text>{state.errorMessage}</Text> : null}

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Title, Button, TextInput, withTheme } from 'react-native-paper';
+import { Title, Button, TextInput } from 'react-native-paper';
 
 import Spacer from '../components/theme/Spacer';
 
@@ -37,4 +37,4 @@ function ProfileSettings() {
   );
 }
 
-export default withTheme(ProfileSettings);
+export default ProfileSettings;

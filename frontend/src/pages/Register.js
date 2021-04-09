@@ -42,8 +42,8 @@ export default function Register({ navigation }) {
         <Spacer y amount={7} />
         <TextInput mode={'outlined'} placeholder="Confirm Password" value={confirmPassword} onChangeText={(newConfirmPassword) => setConfirmPassword(newConfirmPassword)} autoCapitalize="none" autoCorrect={false} secureTextEntry />
         <Spacer y>
-          <Button title="Register" onPress={registerUser}>
-            <Text>Register</Text>
+          <Button mode={'contained'} title="Register" onPress={registerUser}>
+            Register
           </Button>
         </Spacer>
         {state.errorMessage ? <Text>{state.errorMessage}</Text> : null}
