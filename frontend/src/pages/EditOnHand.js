@@ -44,6 +44,9 @@ export default function EditOnHand({ navigation }) {
     if (ingredient && !ingredients.find((ing) => ing.ingredient === ingredient.ingredient)) {
       setIngredients([ingredient, ...ingredients]);
     }
+    if (removedIngredients.some((i) => i.ingredient === ingredient.ingredient)) {
+      setRemovedIngredients(removedIngredients.filter((ing) => ing.ingredient !== ingredient.ingredient));
+    }
   };
 
   const removeIngredientFromList = (id) => {
