@@ -24,6 +24,7 @@ import { Provider as AuthProvider } from './src/contexts/AuthContext';
 import { Provider as DrinksProvider } from './src/contexts/DrinkContext';
 import { Provider as DrinkCreateProvider } from './src/contexts/DrinkCreateContext';
 import { Provider as DrinkSearchProvider } from './src/contexts/SearchContext';
+import { Provider as OnHandProvider } from './src/contexts/OnHandContext';
 
 import { navigationRef } from './src/RootNavigation';
 
@@ -146,9 +147,11 @@ export default function App() {
         <DrinksProvider>
           <DrinkSearchProvider>
             <DrinkCreateProvider>
-              <PaperProvider theme={BarCartTheme.theme}>
-                <AppNavigator />
-              </PaperProvider>
+              <OnHandProvider>
+                <PaperProvider theme={BarCartTheme.theme}>
+                  <AppNavigator />
+                </PaperProvider>
+              </OnHandProvider>
             </DrinkCreateProvider>
           </DrinkSearchProvider>
         </DrinksProvider>
