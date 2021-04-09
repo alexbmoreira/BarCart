@@ -45,6 +45,11 @@ export default function EditOnHand({ navigation }) {
     }
   };
 
+  const updateIngredients = () => {
+    const newIngredients = ingredients.filter((i) => !onHandState.onHand.some((ohi) => ohi.id === i.ingredient));
+    addOnHand(newIngredients);
+  };
+
   const ingredientsArray = ingredientsState.ingredientsList.map((ing, i) => {
     return { label: ing.name, value: ing.id };
   });
@@ -65,7 +70,7 @@ export default function EditOnHand({ navigation }) {
         <RNPickerSelect placeholder={{ label: 'Select an ingredient...' }} onValueChange={ingredientValueChange} items={ingredientsArray} />
         <Button onPress={addIngredientToList}>Add ingredient</Button>
         {ingredients.length > 0 ? addedIngredients : <Text>None</Text>}
-        {/* <Button onPress={() => addOnHand(ingredients)}>Update on hand</Button> */}
+        <Button onPress={updateIngredients}>Update on hand</Button>
         <Button onPress={() => navigation.navigate('OnTap')}>See what's On Tap</Button>
       </Spacer>
     </ScrollView>
