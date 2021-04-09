@@ -5,6 +5,7 @@ import { useTheme } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 
 import Spacer from '../components/theme/Spacer';
+import Flex from '../components/theme/Flex';
 import DrinkTile from '../components/common/DrinkTile';
 
 import { Context as DrinkContext } from '../contexts/DrinkContext';
@@ -31,10 +32,12 @@ function Profile({ navigation }) {
   return (
     <ScrollView>
       <Spacer>
-        <Title>{authState.userInfo?.username}</Title>
-        <Button mode={'contained'} onPress={() => viewSettings()}>
-          <FontAwesome name="gear" size={32} color={colors.background} />
-        </Button>
+        <Flex row>
+          <Title>{authState.userInfo?.username}</Title>
+          <Button onPress={() => viewSettings()}>
+            <FontAwesome name="gear" size={32} color={colors.surface} />
+          </Button>
+        </Flex>
       </Spacer>
       <Spacer x>
         <Title>Your Drinks</Title>
