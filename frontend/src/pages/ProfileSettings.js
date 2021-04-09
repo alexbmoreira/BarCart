@@ -6,7 +6,7 @@ import Spacer from '../components/theme/Spacer';
 
 import { Context as AuthContext } from '../contexts/AuthContext';
 
-function ProfileSettings() {
+function ProfileSettings({ navigation }) {
   const { state, logout } = useContext(AuthContext);
 
   const logoutUser = () => {
@@ -23,7 +23,9 @@ function ProfileSettings() {
           <Title>Your on-hand ingredients</Title>
           <TextInput mode={'outlined'} disabled={true} placeholder={'Ingredients'} value={''} />
         </Spacer>
-        <Button mode={'contained'}>Edit Ingredients</Button>
+        <Button mode={'contained'} onPress={() => navigation.navigate('EditOnHand')}>
+          Edit Ingredients
+        </Button>
 
         <Spacer y>
           <Title>Username</Title>

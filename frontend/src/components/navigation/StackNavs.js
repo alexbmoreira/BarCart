@@ -86,6 +86,8 @@ function ProfileStack() {
       />
       <ProfileNav.Screen name="ProfileSettings" component={ProfileSettings} options={headerOptions} />
       <ProfileNav.Screen name="DrinkDetail" component={DrinkDetail} options={headerOptions} />
+      <OnTapNav.Screen name="EditOnHand" component={EditOnHand} options={headerOptions} />
+      <OnTapNav.Screen name="OnTap" component={OnTap} options={headerOptions} />
     </ProfileNav.Navigator>
   );
 }
