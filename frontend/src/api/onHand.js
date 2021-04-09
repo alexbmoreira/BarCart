@@ -9,7 +9,7 @@ async function addOnHand(onHand) {
 
 async function removeOnHand(onHand) {
   return api
-    .delete('/users/onhand/', onHand)
+    .delete('/users/onhand/', { data: onHand })
     .then(() => {})
     .catch((e) => console.log(e.response.data));
 }

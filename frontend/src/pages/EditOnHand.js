@@ -11,11 +11,12 @@ import { Context as OnHandContext } from '../contexts/OnHandContext';
 import { Context as DrinkCreateContext } from '../contexts/DrinkCreateContext';
 
 export default function EditOnHand({ navigation }) {
-  const { state: onHandState, addOnHand, getOnHand } = useContext(OnHandContext);
+  const { state: onHandState, addOnHand, removeOnHand, getOnHand } = useContext(OnHandContext);
   const { state: ingredientsState, getIngredients } = useContext(DrinkCreateContext);
 
   const [ingredient, setIngredient] = useState(null);
   const [ingredients, setIngredients] = useState([]);
+  const [removedIngredients, setRemovedIngredients] = useState([]);
 
   useEffect(() => {
     const ing = navigation.addListener('focus', async () => {
@@ -45,9 +46,22 @@ export default function EditOnHand({ navigation }) {
     }
   };
 
+  const removeIngredientFromList = (id) => {
+    if (onHandState.onHand.some((i) => i.id === id)) {
+      setRemovedIngredients([...removedIngredients, { ingredient: id, name: ingredients.find((i) => i.ingredient === id).name }]);
+    }
+    setIngredients(ingredients.filter((ing) => ing.ingredient !== id));
+  };
+
   const updateIngredients = () => {
     const newIngredients = ingredients.filter((i) => !onHandState.onHand.some((ohi) => ohi.id === i.ingredient));
-    addOnHand(newIngredients);
+    if (newIngredients.length > 0) {
+      addOnHand(newIngredients);
+    }
+    if (removedIngredients.length > 0) {
+      removeOnHand(removedIngredients);
+    }
+    navigation.navigate('OnTap');
   };
 
   const ingredientsArray = ingredientsState.ingredientsList.map((ing, i) => {
@@ -57,7 +71,7 @@ export default function EditOnHand({ navigation }) {
   const addedIngredients = ingredients.map((ing, i) => {
     return (
       <View key={ing.id || ing.ingredient}>
-        <DrinkIngredient removeIngredient={() => {}} ingredient={ing} />
+        <DrinkIngredient removeIngredient={removeIngredientFromList} ingredient={ing} />
         {i < ingredients.length - 1 ? <Spacer amount={5} /> : null}
       </View>
     );

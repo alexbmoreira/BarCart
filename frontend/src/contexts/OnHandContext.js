@@ -1,7 +1,5 @@
 import createDataContext from './createDataContext';
 
-import { navigate } from '../RootNavigation';
-
 import onHandAPI from '../api/onHand';
 
 const onHandReducer = (state, action) => {
@@ -16,7 +14,12 @@ const onHandReducer = (state, action) => {
 const addOnHand = (dispatch) => {
   return async (ingredients) => {
     await onHandAPI.addOnHand(ingredients);
-    navigate('OnTap');
+  };
+};
+
+const removeOnHand = (dispatch) => {
+  return async (ingredients) => {
+    await onHandAPI.removeOnHand(ingredients);
   };
 };
 
@@ -27,4 +30,4 @@ const getOnHand = (dispatch) => {
   };
 };
 
-export const { Provider, Context } = createDataContext(onHandReducer, { addOnHand, getOnHand }, { onHand: [] });
+export const { Provider, Context } = createDataContext(onHandReducer, { addOnHand, removeOnHand, getOnHand }, { onHand: [] });
