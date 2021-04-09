@@ -14,7 +14,7 @@ export default function EditOnHand({ navigation }) {
   const { state: onHandState, addOnHand, getOnHand } = useContext(OnHandContext);
   const { state: ingredientsState, getIngredients } = useContext(DrinkCreateContext);
 
-  const [ingredient, setIngredient] = useState({});
+  const [ingredient, setIngredient] = useState(null);
   const [ingredients, setIngredients] = useState([]);
 
   useEffect(() => {
@@ -23,10 +23,15 @@ export default function EditOnHand({ navigation }) {
         await getIngredients();
       }
       await getOnHand();
+      setIngredients(
+        onHandState.onHand.map((i) => {
+          return { ingredient: i.id || i.ingredient, name: i.name };
+        })
+      );
     });
 
     return ing;
-  }, [navigation, getIngredients, ingredientsState, getOnHand]);
+  }, [navigation, getIngredients, ingredientsState, getOnHand, onHandState]);
 
   const ingredientValueChange = (id, i) => {
     if (id) {
@@ -35,7 +40,7 @@ export default function EditOnHand({ navigation }) {
   };
 
   const addIngredientToList = () => {
-    if (ingredient && !ingredients.concat(onHandState.onHand).find((ing) => (ing.ingredient || ing.id) === ingredient.ingredient)) {
+    if (ingredient && !ingredients.find((ing) => ing.ingredient === ingredient.ingredient)) {
       setIngredients([ingredient, ...ingredients]);
     }
   };
@@ -44,11 +49,11 @@ export default function EditOnHand({ navigation }) {
     return { label: ing.name, value: ing.id };
   });
 
-  const addedIngredients = ingredients.concat(onHandState.onHand).map((ing, i) => {
+  const addedIngredients = ingredients.map((ing, i) => {
     return (
       <View key={ing.id || ing.ingredient}>
         <DrinkIngredient removeIngredient={() => {}} ingredient={ing} />
-        {i < [...onHandState.onHand, ...ingredients].length - 1 ? <Spacer amount={5} /> : null}
+        {i < ingredients.length - 1 ? <Spacer amount={5} /> : null}
       </View>
     );
   });
@@ -59,7 +64,8 @@ export default function EditOnHand({ navigation }) {
         <Title>Ingredients on hand</Title>
         <RNPickerSelect placeholder={{ label: 'Select an ingredient...' }} onValueChange={ingredientValueChange} items={ingredientsArray} />
         <Button onPress={addIngredientToList}>Add ingredient</Button>
-        {[...onHandState.onHand, ...ingredients].length > 0 ? addedIngredients : <Text>None</Text>}
+        {ingredients.length > 0 ? addedIngredients : <Text>None</Text>}
+        {/* <Button onPress={() => addOnHand(ingredients)}>Update on hand</Button> */}
         <Button onPress={() => navigation.navigate('OnTap')}>See what's On Tap</Button>
       </Spacer>
     </ScrollView>
