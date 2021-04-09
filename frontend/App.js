@@ -101,13 +101,21 @@ function MainTabs() {
   const { colors } = useTheme();
 
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      tabBarOptions={{
+        activeTintColor: colors.background,
+        inactiveTintColor: colors.surface,
+        style: {
+          backgroundColor: colors.primary,
+        },
+      }}
+    >
       <Tab.Screen
         name="HomeStack"
         component={HomeStack}
         options={{
           title: 'Home',
-          tabBarIcon: () => <FontAwesome name="home" size={36} color={colors.surface} />,
+          tabBarIcon: () => <FontAwesome name="home" size={30} color={colors.surface} />,
         }}
       />
       <Tab.Screen
@@ -115,7 +123,7 @@ function MainTabs() {
         component={SearchStack}
         options={{
           title: 'Search',
-          tabBarIcon: () => <FontAwesome name="search" size={32} color={colors.surface} />,
+          tabBarIcon: () => <FontAwesome name="search" size={28} color={colors.surface} />,
         }}
       />
       <Tab.Screen
@@ -123,7 +131,7 @@ function MainTabs() {
         component={CreateDrinkStack}
         options={{
           title: 'Create Drink',
-          tabBarIcon: () => <FontAwesome name="plus-square" size={32} color={colors.surface} />,
+          tabBarIcon: () => <FontAwesome name="plus-square" size={28} color={colors.surface} />,
         }}
       />
       <Tab.Screen
@@ -131,7 +139,7 @@ function MainTabs() {
         component={OnTapStack}
         options={{
           title: 'On Tap',
-          tabBarIcon: () => <FontAwesome name="glass" size={32} color={colors.surface} />,
+          tabBarIcon: () => <FontAwesome name="glass" size={28} color={colors.surface} />,
         }}
       />
       <Tab.Screen
@@ -139,7 +147,7 @@ function MainTabs() {
         component={ProfileStack}
         options={{
           title: 'Profile',
-          tabBarIcon: () => <FontAwesome name="user-circle" size={32} color={colors.surface} />,
+          tabBarIcon: () => <FontAwesome name="user-circle" size={28} color={colors.surface} />,
         }}
       />
     </Tab.Navigator>
