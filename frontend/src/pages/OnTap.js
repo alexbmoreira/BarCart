@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Button, Title } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 
 import Spacer from '../components/theme/Spacer';
 import DrinkListItem from '../components/common/DrinkListItem';
@@ -24,15 +24,14 @@ export default function OnTap({ navigation }) {
 
   return (
     <View>
-      <Spacer>
-        <Title>On Tap</Title>
+      <Spacer y>
+        <ScrollView>
+          {userOnTapArray}
+          <Spacer x>
+            <Button onPress={() => navigation.navigate('EditOnHand')}>Edit on-hand ingredients</Button>
+          </Spacer>
+        </ScrollView>
       </Spacer>
-      <ScrollView>
-        {userOnTapArray}
-        <Spacer x>
-          <Button onPress={() => navigation.navigate('EditOnHand')}>Edit on-hand ingredients</Button>
-        </Spacer>
-      </ScrollView>
     </View>
   );
 }

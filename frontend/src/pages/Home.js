@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Button, Text, Title } from 'react-native-paper';
+import { Text, Title } from 'react-native-paper';
 
 import Spacer from '../components/theme/Spacer';
 import DrinkTile from '../components/common/DrinkTile';
@@ -38,7 +38,6 @@ function Home({ navigation, theme }) {
 
   return (
     <ScrollView>
-      <Button onPress={() => navigation.navigate('DrinkDetail')}>Go to drink detail page (remove me!)</Button>
       <Spacer>
         <Title>BarCart is an app designed to get the right drink in your hands!</Title>
         <Text>Check out the "On Tap" section for drinks that you can make right now.</Text>
