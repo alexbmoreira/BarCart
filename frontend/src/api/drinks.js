@@ -31,6 +31,10 @@ async function searchDrinks(searchTerm) {
   return api.get(`/drinks/search/${searchTerm}/`).then((response) => response.data);
 }
 
+async function getDrink(id) {
+  return api.get(`/drinks/${id}/`).then((response) => response.data);
+}
+
 export default {
   getUserDrinks,
   getUserOnTap,
@@ -39,4 +43,5 @@ export default {
   createDrink,
   getIngredients,
   searchDrinks,
+  getDrink,
 };
