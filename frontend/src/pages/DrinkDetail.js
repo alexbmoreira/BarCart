@@ -23,7 +23,7 @@ function Home({ route, navigation }) {
     <ScrollView>
       <Spacer>
         <Title>Drink detail</Title>
-        <Text>{state.drink ? state.drink.name : ''}</Text>
+        <Text>{state.drink?.name}</Text>
         <Text>{drinkID}</Text>
       </Spacer>
     </ScrollView>
