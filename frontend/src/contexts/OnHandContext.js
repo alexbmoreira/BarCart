@@ -12,8 +12,8 @@ const onHandReducer = (state, action) => {
 };
 
 const addOnHand = (dispatch) => {
-  return async () => {
-    await onHandAPI.addOnHand([{ ingredient: 2838 }, { ingredient: 2879 }]);
+  return async ({ ingredient }) => {
+    await onHandAPI.addOnHand([{ ingredient }]);
   };
 };
 
