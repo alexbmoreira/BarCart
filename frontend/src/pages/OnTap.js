@@ -28,7 +28,9 @@ export default function OnTap({ navigation }) {
         <ScrollView>
           {userOnTapArray}
           <Spacer x>
-            <Button onPress={() => navigation.navigate('EditOnHand')}>Edit on-hand ingredients</Button>
+            <Button mode={'contained'} onPress={() => navigation.navigate('EditOnHand')}>
+              Edit on-hand ingredients
+            </Button>
           </Spacer>
         </ScrollView>
       </Spacer>
