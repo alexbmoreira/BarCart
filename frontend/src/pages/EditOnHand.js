@@ -74,7 +74,7 @@ export default function EditOnHand({ navigation }) {
   const addedIngredients = ingredients.map((ing, i) => {
     return (
       <View key={ing.id || ing.ingredient}>
-        <DrinkIngredient removeIngredient={removeIngredientFromList} ingredient={ing} />
+        <DrinkIngredient isBase removeIngredient={removeIngredientFromList} ingredient={ing} />
         {i < ingredients.length - 1 ? <Spacer amount={5} /> : null}
       </View>
     );
