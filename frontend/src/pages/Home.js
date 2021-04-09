@@ -20,20 +20,20 @@ function Home({ navigation, theme }) {
     return ud;
   }, [navigation, getPopularDrinks, getUserDrinks, getUserOnTap, getUserLikes, state]);
 
-  const popularDrinksArray = state.popularDrinks.map((drink, i) => {
-    return <DrinkTile key={state.popularDrinks[i].id} drink={state.popularDrinks[i]} />;
+  const popularDrinksArray = state.popularDrinks.map((drink) => {
+    return <DrinkTile key={drink.id} drink={drink} />;
   });
 
-  const userDrinksArray = state.userDrinks.map((drink, i) => {
-    return <DrinkTile key={state.userDrinks[i].id} drink={state.userDrinks[i]} />;
+  const userDrinksArray = state.userDrinks.map((drink) => {
+    return <DrinkTile key={drink.id} drink={drink} />;
   });
 
-  const userOnTapArray = state.userOnTap.map((drink, i) => {
-    return <DrinkTile key={state.userOnTap[i].id} drink={state.userOnTap[i]} />;
+  const userOnTapArray = state.userOnTap.map((drink) => {
+    return <DrinkTile key={drink.id} drink={drink} />;
   });
 
-  const userLikesArray = state.userLikes.map((drink, i) => {
-    return <DrinkTile key={state.userLikes[i].id} drink={state.userLikes[i]} />;
+  const userLikesArray = state.userLikes.map((drink) => {
+    return <DrinkTile key={drink.id} drink={drink} />;
   });
 
   return (
