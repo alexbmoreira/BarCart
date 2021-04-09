@@ -12,8 +12,8 @@ const drinksReducer = (state, action) => {
 };
 
 const getDrink = (dispatch) => {
-  return async (id) => {
-    const drink = await drinksAPI.getDrink(73);
+  return async (drinkID) => {
+    const drink = await drinksAPI.getDrink(drinkID);
     dispatch({ type: 'get_drink', payload: drink });
   };
 };

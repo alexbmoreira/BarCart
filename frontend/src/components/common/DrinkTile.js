@@ -12,7 +12,7 @@ function DrinkTile({ drink }) {
   const { colors } = useTheme();
   return (
     <Spacer>
-      <TouchableOpacity onPress={() => navigate('DrinkDetail')}>
+      <TouchableOpacity onPress={() => navigate('DrinkDetail', { drinkID: drink.id })}>
         <Card style={styles.card}>
           <Card.Cover resizeMode="stretch" style={styles.cardCover} source={require('../../../assets/drink_default.png')} />
           <Card.Content>

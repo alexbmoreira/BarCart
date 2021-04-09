@@ -10,7 +10,7 @@ import { navigate } from '../../RootNavigation';
 function DrinkSearchItem({ drink }) {
   const { colors } = useTheme();
   return (
-    <TouchableOpacity onPress={() => navigate('DrinkDetail')}>
+    <TouchableOpacity onPress={() => navigate('DrinkDetail', { drinkID: drink.id })}>
       <Card>
         <Card.Content>
           <Flex row>
