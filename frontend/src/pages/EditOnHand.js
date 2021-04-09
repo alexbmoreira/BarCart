@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Title, Button, Text } from 'react-native-paper';
 import RNPickerSelect from 'react-native-picker-select';
+import { FontAwesome } from '@expo/vector-icons';
 
 import Spacer from '../components/theme/Spacer';
 import DrinkIngredient from '../components/createDrink/DrinkIngredient';
@@ -85,7 +86,14 @@ export default function EditOnHand({ navigation }) {
       <Spacer>
         <Title>Ingredients on hand</Title>
         <Spacer y>
-          <RNPickerSelect placeholder={{ label: 'Select an ingredient...' }} onValueChange={ingredientValueChange} items={ingredientsArray} />
+          <RNPickerSelect
+            style={pickerSelectStyles}
+            useNativeAndroidPickerStyle={false}
+            Icon={() => <FontAwesome name="chevron-down" size={20} color="grey" />}
+            placeholder={{ label: 'Select an ingredient...' }}
+            onValueChange={ingredientValueChange}
+            items={ingredientsArray}
+          />
         </Spacer>
         <Spacer y>
           <Button mode={'contained'} onPress={addIngredientToList}>
@@ -107,3 +115,30 @@ export default function EditOnHand({ navigation }) {
     </ScrollView>
   );
 }
+
+const pickerSelectStyles = StyleSheet.create({
+  inputIOS: {
+    fontSize: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 4,
+    color: 'black',
+    paddingRight: 30, // to ensure the text is never behind the icon
+  },
+  inputAndroid: {
+    fontSize: 16,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderWidth: 0.5,
+    borderColor: 'purple',
+    borderRadius: 8,
+    color: 'black',
+    paddingRight: 30, // to ensure the text is never behind the icon
+  },
+  iconContainer: {
+    top: 10,
+    right: 15,
+  },
+});

@@ -85,7 +85,7 @@ function ProfileStack() {
         options={({ navigation }) => ({
           headerLeft: () => null,
           headerRight: () => (
-            <Spacer x amount={32}>
+            <Spacer x amount={24}>
               <FontAwesome name="gear" size={32} color={colors.surface} onPress={() => navigation.navigate('ProfileSettings')} />
             </Spacer>
           ),
