@@ -11,7 +11,7 @@ function Home({ navigation }) {
 
   useEffect(() => {
     const ud = navigation.addListener('focus', async () => {
-      getDrink();
+      await getDrink();
     });
     return ud;
   }, [navigation, getDrink, state]);

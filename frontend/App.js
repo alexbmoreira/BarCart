@@ -51,6 +51,7 @@ function SearchStack() {
   return (
     <SearchNav.Navigator>
       <SearchNav.Screen name="Search" component={Search} options={{ headerLeft: () => null }} />
+      <SearchNav.Screen name="DrinkDetail" component={DrinkDetail} />
     </SearchNav.Navigator>
   );
 }
@@ -68,6 +69,7 @@ function OnTapStack() {
     <OnTapNav.Navigator>
       <OnTapNav.Screen name="OnTap" component={OnTap} options={{ headerLeft: () => null }} />
       <OnTapNav.Screen name="EditOnHand" component={EditOnHand} />
+      <OnTapNav.Screen name="DrinkDetail" component={DrinkDetail} />
     </OnTapNav.Navigator>
   );
 }
@@ -77,6 +79,7 @@ function ProfileStack() {
     <ProfileNav.Navigator>
       <ProfileNav.Screen name="Profile" component={Profile} options={{ headerLeft: () => null }} />
       <ProfileNav.Screen name="ProfileSettings" component={ProfileSettings} />
+      <ProfileNav.Screen name="DrinkDetail" component={DrinkDetail} />
     </ProfileNav.Navigator>
   );
 }
