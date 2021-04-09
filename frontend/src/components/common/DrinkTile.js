@@ -1,21 +1,27 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Card, Title } from 'react-native-paper';
-import { withTheme } from 'react-native-paper';
+import { useTheme } from 'react-native-paper';
+
 import Spacer from '../theme/Spacer';
 
-function DrinkTile(props) {
-  const { colors } = props.theme;
+import { navigate } from '../../RootNavigation';
+
+function DrinkTile({ drink }) {
+  const { colors } = useTheme();
   return (
     <Spacer>
-      <Card style={styles.card}>
-        <Card.Cover resizeMode="stretch" style={styles.cardCover} source={require('../../../assets/drink_default.png')} />
-        <Card.Content>
-          <Title style={{ ...styles.alignText, color: colors.background }} numberOfLines={1}>
-            {props.drink.name}
-          </Title>
-        </Card.Content>
-      </Card>
+      <TouchableOpacity onPress={() => navigate('DrinkDetail', { drinkID: drink.id })}>
+        <Card style={styles.card}>
+          <Card.Cover resizeMode="stretch" style={styles.cardCover} source={require('../../../assets/drink_default.png')} />
+          <Card.Content>
+            <Title style={{ ...styles.alignText, color: colors.background }} numberOfLines={1}>
+              {drink.name}
+            </Title>
+          </Card.Content>
+        </Card>
+      </TouchableOpacity>
     </Spacer>
   );
 }
@@ -34,4 +40,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(DrinkTile);
+export default DrinkTile;

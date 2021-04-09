@@ -31,7 +31,7 @@ function Profile({ navigation }) {
   return (
     <ScrollView>
       <Spacer>
-        <Title>{authState.userInfo.username}</Title>
+        <Title>{authState.userInfo?.username}</Title>
         <Button onPress={() => viewSettings()}>
           <FontAwesome name="gear" size={32} color={colors.surface} />
         </Button>

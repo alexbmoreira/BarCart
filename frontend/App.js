@@ -10,6 +10,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import Login from './src/pages/Login';
 import Register from './src/pages/Register';
 import ResolveAuth from './src/pages/ResolveAuth';
+import DrinkDetail from './src/pages/DrinkDetail';
 import Home from './src/pages/Home';
 import Search from './src/pages/Search';
 import CreateDrink from './src/pages/CreateDrink';
@@ -24,6 +25,7 @@ import { Provider as AuthProvider } from './src/contexts/AuthContext';
 import { Provider as DrinksProvider } from './src/contexts/DrinkContext';
 import { Provider as DrinkCreateProvider } from './src/contexts/DrinkCreateContext';
 import { Provider as DrinkSearchProvider } from './src/contexts/SearchContext';
+import { Provider as DrinkDetailProvider } from './src/contexts/DrinkDetailContext';
 import { Provider as OnHandProvider } from './src/contexts/OnHandContext';
 
 import { navigationRef } from './src/RootNavigation';
@@ -40,6 +42,7 @@ function HomeStack() {
   return (
     <HomeNav.Navigator>
       <HomeNav.Screen name="Home" component={Home} options={{ headerLeft: () => null }} />
+      <HomeNav.Screen name="DrinkDetail" component={DrinkDetail} />
     </HomeNav.Navigator>
   );
 }
@@ -48,6 +51,7 @@ function SearchStack() {
   return (
     <SearchNav.Navigator>
       <SearchNav.Screen name="Search" component={Search} options={{ headerLeft: () => null }} />
+      <SearchNav.Screen name="DrinkDetail" component={DrinkDetail} />
     </SearchNav.Navigator>
   );
 }
@@ -65,6 +69,7 @@ function OnTapStack() {
     <OnTapNav.Navigator>
       <OnTapNav.Screen name="OnTap" component={OnTap} options={{ headerLeft: () => null }} />
       <OnTapNav.Screen name="EditOnHand" component={EditOnHand} />
+      <OnTapNav.Screen name="DrinkDetail" component={DrinkDetail} />
     </OnTapNav.Navigator>
   );
 }
@@ -74,6 +79,7 @@ function ProfileStack() {
     <ProfileNav.Navigator>
       <ProfileNav.Screen name="Profile" component={Profile} options={{ headerLeft: () => null }} />
       <ProfileNav.Screen name="ProfileSettings" component={ProfileSettings} />
+      <ProfileNav.Screen name="DrinkDetail" component={DrinkDetail} />
     </ProfileNav.Navigator>
   );
 }
@@ -147,11 +153,13 @@ export default function App() {
         <DrinksProvider>
           <DrinkSearchProvider>
             <DrinkCreateProvider>
-              <OnHandProvider>
-                <PaperProvider theme={BarCartTheme.theme}>
-                  <AppNavigator />
-                </PaperProvider>
-              </OnHandProvider>
+              <DrinkDetailProvider>
+                <OnHandProvider>
+                  <PaperProvider theme={BarCartTheme.theme}>
+                    <AppNavigator />
+                  </PaperProvider>
+                </OnHandProvider>
+              </DrinkDetailProvider>
             </DrinkCreateProvider>
           </DrinkSearchProvider>
         </DrinksProvider>

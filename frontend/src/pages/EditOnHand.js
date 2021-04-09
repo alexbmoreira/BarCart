@@ -91,8 +91,12 @@ export default function EditOnHand({ navigation }) {
           <Button onPress={addIngredientToList}>Add ingredient</Button>
         </Spacer>
         {ingredients.length > 0 ? addedIngredients : <Text>None</Text>}
-        <Button onPress={updateIngredients}>Update on hand</Button>
-        <Button onPress={() => navigation.navigate('OnTap')}>See what's On Tap</Button>
+        <Spacer y>
+          <Button onPress={updateIngredients}>Update on hand</Button>
+        </Spacer>
+        <Spacer y>
+          <Button onPress={() => navigation.navigate('OnTap')}>See what's On Tap</Button>
+        </Spacer>
       </Spacer>
     </ScrollView>
   );
