@@ -19,6 +19,7 @@ import EditOnHand from './src/pages/EditOnHand';
 import Profile from './src/pages/Profile';
 import ProfileSettings from './src/pages/ProfileSettings';
 
+import Spacer from './src/components/theme/Spacer';
 import BarCartTheme from './src/BarCartTheme';
 
 import { Provider as AuthProvider } from './src/contexts/AuthContext';
@@ -75,9 +76,21 @@ function OnTapStack() {
 }
 
 function ProfileStack() {
+  const { colors } = useTheme();
   return (
     <ProfileNav.Navigator>
-      <ProfileNav.Screen name="Profile" component={Profile} options={{ headerLeft: () => null }} />
+      <ProfileNav.Screen
+        name="Profile"
+        component={Profile}
+        options={({ navigation }) => ({
+          headerLeft: () => null,
+          headerRight: () => (
+            <Spacer x amount={32}>
+              <FontAwesome name="gear" size={32} color={colors.surface} onPress={() => navigation.navigate('ProfileSettings')} />
+            </Spacer>
+          ),
+        })}
+      />
       <ProfileNav.Screen name="ProfileSettings" component={ProfileSettings} />
       <ProfileNav.Screen name="DrinkDetail" component={DrinkDetail} />
     </ProfileNav.Navigator>
