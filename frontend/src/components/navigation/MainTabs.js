@@ -2,6 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
+import BarCartIcons from '../../../assets/fonts/BarCartIcons';
 
 import Stacks from './StackNavs';
 
@@ -49,7 +50,7 @@ function MainTabs() {
         component={Stacks.OnTapStack}
         options={{
           title: 'On Tap',
-          tabBarIcon: () => <FontAwesome name="glass" size={28} color={colors.surface} />,
+          tabBarIcon: () => <BarCartIcons name="on-tap" size={28} color={colors.surface} />,
         }}
       />
       <Tab.Screen
