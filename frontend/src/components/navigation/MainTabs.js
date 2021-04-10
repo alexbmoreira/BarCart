@@ -2,8 +2,41 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
+import BarCartIcons from '../../../assets/fonts/BarCartIcons';
 
 import Stacks from './StackNavs';
+
+const screenOptions = ({ route }) => ({
+  tabBarIcon: ({ focused, color, size }) => {
+    let iconName;
+    let custom;
+
+    switch (route.name) {
+      case 'HomeStack':
+        iconName = 'home';
+        custom = false;
+        break;
+      case 'SearchStack':
+        iconName = 'search';
+        custom = false;
+        break;
+      case 'CreateDrinkStack':
+        iconName = 'plus-square';
+        custom = false;
+        break;
+      case 'OnTapStack':
+        iconName = 'on-tap';
+        custom = true;
+        break;
+      case 'ProfileStack':
+        iconName = 'user-circle';
+        custom = false;
+        break;
+    }
+
+    return custom ? <BarCartIcons name={iconName} size={size} color={color} /> : <FontAwesome name={iconName} size={size} color={color} />;
+  },
+});
 
 const Tab = createBottomTabNavigator();
 
@@ -19,13 +52,13 @@ function MainTabs() {
           backgroundColor: colors.primary,
         },
       }}
+      screenOptions={screenOptions}
     >
       <Tab.Screen
         name="HomeStack"
         component={Stacks.HomeStack}
         options={{
           title: 'Home',
-          tabBarIcon: () => <FontAwesome name="home" size={30} color={colors.surface} />,
         }}
       />
       <Tab.Screen
@@ -33,7 +66,6 @@ function MainTabs() {
         component={Stacks.SearchStack}
         options={{
           title: 'Search',
-          tabBarIcon: () => <FontAwesome name="search" size={28} color={colors.surface} />,
         }}
       />
       <Tab.Screen
@@ -41,7 +73,6 @@ function MainTabs() {
         component={Stacks.CreateDrinkStack}
         options={{
           title: 'Create Drink',
-          tabBarIcon: () => <FontAwesome name="plus-square" size={28} color={colors.surface} />,
         }}
       />
       <Tab.Screen
@@ -49,7 +80,6 @@ function MainTabs() {
         component={Stacks.OnTapStack}
         options={{
           title: 'On Tap',
-          tabBarIcon: () => <FontAwesome name="glass" size={28} color={colors.surface} />,
         }}
       />
       <Tab.Screen
@@ -57,7 +87,6 @@ function MainTabs() {
         component={Stacks.ProfileStack}
         options={{
           title: 'Profile',
-          tabBarIcon: () => <FontAwesome name="user-circle" size={28} color={colors.surface} />,
         }}
       />
     </Tab.Navigator>
