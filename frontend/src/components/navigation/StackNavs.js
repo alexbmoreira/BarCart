@@ -6,6 +6,7 @@ import DrinkDetail from '../../pages/DrinkDetail';
 import Home from '../../pages/Home';
 import Search from '../../pages/Search';
 import CreateDrink from '../../pages/CreateDrink';
+import YourDrinks from '../../pages/YourDrinks';
 import OnTap from '../../pages/OnTap';
 import EditOnHand from '../../pages/EditOnHand';
 import Profile from '../../pages/Profile';
@@ -54,6 +55,8 @@ function CreateDrinkStack() {
   return (
     <CreateDrinkNav.Navigator>
       <CreateDrinkNav.Screen name="CreateDrink" component={CreateDrink} options={{ ...headerOptions, headerLeft: () => null }} />
+      <SearchNav.Screen name="YourDrinks" component={YourDrinks} options={headerOptions} />
+      <SearchNav.Screen name="DrinkDetail" component={DrinkDetail} options={headerOptions} />
     </CreateDrinkNav.Navigator>
   );
 }

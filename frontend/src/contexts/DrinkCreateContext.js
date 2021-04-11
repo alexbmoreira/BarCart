@@ -16,7 +16,7 @@ const drinksReducer = (state, action) => {
 const createDrink = (dispatch) => {
   return async ({ name, instructions, ingredients }) => {
     await drinksAPI.createDrink({ name, instructions, ingredients });
-    navigate('Main');
+    navigate('YourDrinks');
   };
 };
 
