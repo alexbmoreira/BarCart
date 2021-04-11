@@ -13,7 +13,7 @@ function DrinkSearchItem({ drink }) {
     <TouchableOpacity onPress={() => navigate('DrinkDetail', { drinkID: drink.id })}>
       <Card>
         <Card.Content>
-          <Flex row>
+          <Flex row justify="space-between">
             <Title style={{ color: colors.background }} numberOfLines={1}>
               {drink.name}
             </Title>

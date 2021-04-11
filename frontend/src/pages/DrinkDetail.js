@@ -59,9 +59,12 @@ function Home({ route, navigation }) {
           </Card.Content>
         </Card>
         <Spacer y>
-          <Flex row>
-            {onTapDrink()}
-            {likedDrink()}
+          <Flex row justify="space-between">
+            <Title>Created by: {detailState.drink?.creator_username}</Title>
+            <Flex row justify="flex-end">
+              {onTapDrink()}
+              {likedDrink()}
+            </Flex>
           </Flex>
         </Spacer>
         <Title>Ingredients:</Title>
