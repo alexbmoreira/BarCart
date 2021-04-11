@@ -14,7 +14,12 @@ async function removeLikes(like) {
     .catch((e) => console.log(e.response.data));
 }
 
+async function getLikes() {
+  return api.get('/users/likes/').then((response) => response.data);
+}
+
 export default {
   addLikes,
   removeLikes,
+  getLikes,
 };

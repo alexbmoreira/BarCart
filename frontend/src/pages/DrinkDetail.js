@@ -17,7 +17,7 @@ function Home({ route, navigation }) {
   const { colors } = useTheme();
 
   const { drinkID } = route.params;
-  const { state: drinkState } = useContext(DrinkContext);
+  const { state: drinkState, getUserLikes } = useContext(DrinkContext);
   const { state: detailState, getDrink } = useContext(DrinkDetailContext);
   const { addLikes, removeLikes } = useContext(LikesContext);
 
@@ -39,16 +39,23 @@ function Home({ route, navigation }) {
     );
   });
 
+  let liked = drinkState.userLikes.some((d) => d.id === detailState.drink?.id);
+
+  const updateLikes = async () => {
+    const drink = { drink: detailState.drink?.id };
+    liked ? await removeLikes(drink) : await addLikes(drink);
+    liked = !liked;
+    await getUserLikes();
+  };
+
   const onTapDrink = () => {
-    const liked = drinkState.userOnTap.some((drink) => drink.id === detailState.drink?.id);
-    return liked ? <BarCartIcons name="on-tap" size={32} /> : null;
+    const onTap = drinkState.userOnTap.some((drink) => drink.id === detailState.drink?.id);
+    return onTap ? <BarCartIcons name="on-tap" size={32} /> : null;
   };
 
   const likedDrink = () => {
-    const drink = { drink: detailState.drink?.id };
-    const liked = drinkState.userLikes.some((d) => d.id === detailState.drink?.id);
     return (
-      <Button onPress={() => (liked ? removeLikes(drink) : addLikes(drink))}>
+      <Button onPress={updateLikes}>
         <FontAwesome name={liked ? 'heart' : 'heart-o'} size={32} color={colors.text} />
       </Button>
     );

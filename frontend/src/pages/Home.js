@@ -6,9 +6,11 @@ import Spacer from '../components/theme/Spacer';
 import DrinkTile from '../components/common/DrinkTile';
 
 import { Context as DrinkContext } from '../contexts/DrinkContext';
+// import { Context as LikesContext } from '../contexts/LikesContext';
 
 function Home({ navigation, theme }) {
   const { state, getPopularDrinks, getUserDrinks, getUserOnTap, getUserLikes } = useContext(DrinkContext);
+  // const { state, getPopularDrinks, getUserDrinks, getUserOnTap, getUserLikes } = useContext(LikesContext);
 
   useEffect(() => {
     const ud = navigation.addListener('focus', async () => {
