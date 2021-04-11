@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -8,7 +8,14 @@ import DrinkListItem from '../components/common/DrinkListItem';
 import { Context as DrinkContext } from '../contexts/DrinkContext';
 
 export default function YourDrinks({ navigation }) {
-  const { state } = useContext(DrinkContext);
+  const { state, getUserDrinks } = useContext(DrinkContext);
+
+  useEffect(() => {
+    const ud = navigation.addListener('focus', async () => {
+      await getUserDrinks();
+    });
+    return ud;
+  }, [navigation, getUserDrinks, state]);
 
   const userDrinksArray = state.userDrinks.map((drink) => {
     return (
