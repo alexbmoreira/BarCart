@@ -10,7 +10,7 @@ function DrinkIngredient({ removeIngredient, ingredient, isBase, theme }) {
   const { colors } = theme;
   return (
     <Card>
-      <Flex row>
+      <Flex row justify="space-between">
         <Spacer>
           <Text style={{ color: colors.background }}>
             {!isBase ? `${ingredient.quantity} ${ingredient.units} of ` : null}
