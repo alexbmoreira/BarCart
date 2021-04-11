@@ -55,7 +55,7 @@ function CreateDrinkStack() {
   return (
     <CreateDrinkNav.Navigator>
       <CreateDrinkNav.Screen name="CreateDrink" component={CreateDrink} options={{ ...headerOptions, headerLeft: () => null }} />
-      <SearchNav.Screen name="YourDrinks" component={YourDrinks} options={headerOptions} />
+      <SearchNav.Screen name="YourDrinks" component={YourDrinks} options={{ ...headerOptions, title: 'Your Drinks' }} />
       <SearchNav.Screen name="DrinkDetail" component={DrinkDetail} options={headerOptions} />
     </CreateDrinkNav.Navigator>
   );

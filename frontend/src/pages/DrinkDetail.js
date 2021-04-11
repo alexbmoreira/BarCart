@@ -21,6 +21,12 @@ function Home({ route, navigation }) {
   const { state: detailState, getDrink } = useContext(DrinkDetailContext);
   const { addLikes, removeLikes } = useContext(LikesContext);
 
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      title: detailState.drink?.name,
+    });
+  }, [navigation, detailState.drink?.name]);
+
   useEffect(() => {
     const ud = navigation.addListener('focus', async () => {
       if (!detailState.drink || detailState.drink.id !== drinkID) {
