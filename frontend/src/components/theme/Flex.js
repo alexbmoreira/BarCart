@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-const Spacer = ({ children, row, col, justify }) => {
+const Spacer = ({ children, row, col, justify, align }) => {
   let style;
   if (row) {
     style = styles.flexRow;
@@ -12,6 +12,9 @@ const Spacer = ({ children, row, col, justify }) => {
 
   if (justify) {
     style = StyleSheet.flatten([style, { justifyContent: justify }]);
+  }
+  if (align) {
+    style = StyleSheet.flatten([style, { alignItems: align }]);
   }
 
   return <View style={style}>{children}</View>;

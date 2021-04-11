@@ -42,8 +42,8 @@ function Home({ route, navigation }) {
   let liked = drinkState.userLikes.some((d) => d.id === detailState.drink?.id);
 
   const updateLikes = async () => {
-    const drink = { drink: detailState.drink?.id };
-    liked ? await removeLikes(drink) : await addLikes(drink);
+    const update = { drink: detailState.drink?.id };
+    liked ? await removeLikes(update) : await addLikes(update);
     liked = !liked;
     await getUserLikes();
   };
