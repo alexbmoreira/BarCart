@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Card, Text, Title } from 'react-native-paper';
+import { Button, Card, Text, Title } from 'react-native-paper';
 import { useTheme } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 import BarCartIcons from '../../assets/fonts/BarCartIcons';
@@ -11,6 +11,7 @@ import Spacer from '../components/theme/Spacer';
 
 import { Context as DrinkContext } from '../contexts/DrinkContext';
 import { Context as DrinkDetailContext } from '../contexts/DrinkDetailContext';
+import { Context as LikesContext } from '../contexts/LikesContext';
 
 function Home({ route, navigation }) {
   const { colors } = useTheme();
@@ -18,6 +19,7 @@ function Home({ route, navigation }) {
   const { drinkID } = route.params;
   const { state: drinkState } = useContext(DrinkContext);
   const { state: detailState, getDrink } = useContext(DrinkDetailContext);
+  const { addLikes, removeLikes } = useContext(LikesContext);
 
   useEffect(() => {
     const ud = navigation.addListener('focus', async () => {
@@ -43,8 +45,13 @@ function Home({ route, navigation }) {
   };
 
   const likedDrink = () => {
-    const liked = drinkState.userLikes.some((drink) => drink.id === detailState.drink?.id);
-    return <FontAwesome name={liked ? 'heart' : 'heart-o'} size={32} />;
+    const drink = { drink: detailState.drink?.id };
+    const liked = drinkState.userLikes.some((d) => d.id === detailState.drink?.id);
+    return (
+      <Button onPress={() => (liked ? removeLikes(drink) : addLikes(drink))}>
+        <FontAwesome name={liked ? 'heart' : 'heart-o'} size={32} color={colors.text} />
+      </Button>
+    );
   };
 
   return (

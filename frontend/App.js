@@ -17,6 +17,7 @@ import { Provider as DrinkCreateProvider } from './src/contexts/DrinkCreateConte
 import { Provider as DrinkSearchProvider } from './src/contexts/SearchContext';
 import { Provider as DrinkDetailProvider } from './src/contexts/DrinkDetailContext';
 import { Provider as OnHandProvider } from './src/contexts/OnHandContext';
+import { Provider as LikesProvider } from './src/contexts/LikesContext';
 
 import { navigationRef } from './src/RootNavigation';
 
@@ -44,9 +45,11 @@ export default function App() {
             <DrinkCreateProvider>
               <DrinkDetailProvider>
                 <OnHandProvider>
-                  <PaperProvider theme={BarCartTheme.theme}>
-                    <AppNavigator />
-                  </PaperProvider>
+                  <LikesProvider>
+                    <PaperProvider theme={BarCartTheme.theme}>
+                      <AppNavigator />
+                    </PaperProvider>
+                  </LikesProvider>
                 </OnHandProvider>
               </DrinkDetailProvider>
             </DrinkCreateProvider>
