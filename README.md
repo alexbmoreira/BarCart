@@ -39,7 +39,7 @@ make migrate
 
 Create a super user to access admin controls
 
-```
+```shell
 python backend/manage.py createsuperuser
 ```
 
@@ -77,13 +77,13 @@ ngrok http 8000
 
 Add ngrok to `ALLOWED_HOSTS` through the `.env` file (Don't include `http://`).
 
-```
+```shell
 NGROK_HOST='<ngrok URL>'
 ```
 
 Update `baseURL` via `frontend/.env`.
 
-```
+```shell
 NGROK_HOST=<ngrok URL>
 ```
 
@@ -127,7 +127,7 @@ After setting the app up you'll have to configure some local settings:
 
 In the `.backend` folder, add a `.env` file and put in some variables for `SECRET_KEY` and `DEBUG`.
 
-```
+```shell
 SECRET_KEY='secretkey'
 DEBUG=True
 ```
@@ -140,7 +140,7 @@ Install the [ESLint extension for VSCode](https://marketplace.visualstudio.com/i
 
 Add the following settings to `.vscode/settings.json`:
 
-```
+```json
 {   
     ...
 
